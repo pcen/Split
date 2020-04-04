@@ -1,0 +1,6 @@
+[submodule "Split/dependencies/GLFW"]
+	path = Split/dependencies/GLFW
+	url = https://github.com/glfw/glfw
+[submodule "Split/dependencies/SPDLOG"]
+	path = Split/dependencies/SPDLOG
+	url = https://github.com/gabime/spdlog

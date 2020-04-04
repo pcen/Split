@@ -1,0 +1,24 @@
+# Visual Studio
+.vs
+*.vcxproj**
+*.sln
+cpp.hint
+
+# Directories
+**/bin
+**/bin_int
+
+# Submodules
+/Split/dependencies/SPDLOG
+/Split/dependencies/GLFW
+
+# Other Dependencies
+/Split/dependencies/GLAD
+
+# Scripts
+build.sh
+run.sh
+pm.sh
+
+# Premake
+/premake

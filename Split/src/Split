@@ -1,0 +1,9 @@
+#ifndef SPLIT
+#define SPLIT
+
+#include "app/application.h"
+#include "app/root.h"
+
+#include "app/entrypoint.h"
+
+#endif /* SPLIT */
