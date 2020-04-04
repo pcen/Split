@@ -3,7 +3,8 @@
 
 int main(int argc, char* argv[])
 {
-	Root::init(argc, argv);
+	Split::Root::init(argc, argv);
+	return 0;
 }
 
 #endif /* ENTRYPOINT_H */

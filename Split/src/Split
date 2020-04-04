@@ -1,6 +1,8 @@
 #ifndef SPLIT
 #define SPLIT
 
+/* Split/src/app
+ */
 #include "app/application.h"
 #include "app/root.h"
 

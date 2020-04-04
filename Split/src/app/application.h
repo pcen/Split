@@ -1,18 +1,27 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-class Application
+namespace Split
 {
-public:
-	Application();
-	virtual ~Application();
 
-	virtual bool running(void);
-	virtual void init(void);
-	virtual void launch(void);
-	virtual void run(void);
-private:
-	bool app_running;
-};
+	class Application
+	{
+	public:
+		Application();
+		virtual ~Application();
+
+		virtual bool running(void);
+		virtual void init(void);
+		virtual void launch(void);
+		virtual void run(void);
+	private:
+		bool app_running;
+	};
+
+	/* client returns application
+	 */
+	Application* create_application(void);
+
+}
 
 #endif /* APPLICATION_H */
