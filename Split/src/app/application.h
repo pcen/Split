@@ -15,7 +15,7 @@ namespace Split
 		virtual void launch(void);
 		virtual void run(void);
 	private:
-		bool app_running;
+		bool m_running;
 	};
 
 	/* client returns application

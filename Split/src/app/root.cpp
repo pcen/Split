@@ -27,6 +27,7 @@ namespace Split
 	{
 		if (root_initialized)
 			return;
+
 		s_application = create_application();
 	}
 
@@ -34,6 +35,7 @@ namespace Split
 	{
 		if (root_initialized)
 			return;
+
 		s_application->init();
 	}
 
@@ -41,6 +43,7 @@ namespace Split
 	{
 		if (!root_initialized)
 			return;
+
 		delete s_application;
 	}
 

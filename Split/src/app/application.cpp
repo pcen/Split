@@ -4,7 +4,7 @@
 namespace Split
 {
 
-	Application::Application() : app_running{ false }
+	Application::Application() : m_running{ false }
 	{
 
 	}
@@ -16,7 +16,7 @@ namespace Split
 
 	bool Application::running(void)
 	{
-		return app_running;
+		return m_running;
 	}
 
 	void Application::init(void)
@@ -26,7 +26,7 @@ namespace Split
 
 	void Application::launch(void)
 	{
-		app_running = true;
+		m_running = true;
 		run();
 	}
 
