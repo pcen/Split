@@ -8,10 +8,7 @@ namespace Split
 
 	class EventBusClientMap
 	{
-	private:
-
-		friend class EventBus;
-
+	public:
 		typedef std::vector<AEventCallback*> callback_list;
 		typedef std::unordered_map<event_type, callback_list> user_callbacks;
 		typedef std::unordered_map<void*, user_callbacks> user_map;
@@ -40,7 +37,6 @@ namespace Split
 			}
 		}
 
-
 		template<class E> void call_generic_callbacks(user_callbacks& user, E& event)
 		{
 			if (!user.count(event_type::GENERIC))
@@ -64,8 +60,8 @@ namespace Split
 
 	class EventBus
 	{
+		friend class Root;
 	public:
-		EventBus::EventBus() {}
 
 		EventBus::~EventBus() {}
 
@@ -88,8 +84,8 @@ namespace Split
 		}
 
 	private:
+		EventBus::EventBus() {}
 		EventBusClientMap users;
-
 	};
 
 }

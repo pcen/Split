@@ -1,6 +1,7 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+#include "display/window.h"
 #include "events/window_events.h"
 #include "events/event_bus_client.h"
 
@@ -14,7 +15,7 @@ namespace Split
 		virtual ~Application();
 
 		virtual bool running(void);
-		virtual void init(EventBus* bus);
+		virtual void init(void);
 		virtual void launch(void);
 		virtual void run(void);
 
@@ -22,6 +23,8 @@ namespace Split
 
 	private:
 		void event_bus_subscribe(void) override;
+
+		Window* m_window;
 
 		bool m_running;
 	};

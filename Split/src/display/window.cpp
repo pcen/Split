@@ -9,18 +9,14 @@
 namespace Split
 {
 
-	Window::Window(EventBus* event_bus, int width, int height, std::string title, bool vsync, bool cursor)
-		: EventBusClient(event_bus), m_width{ width }, m_height{ height }, m_title{ title },
-		m_aspect_ratio{ (float)width / (float)height }, m_open{ false }, m_window{ nullptr },
-		m_vsync{ vsync }, m_cursor{ cursor }
+	Window::Window(int width, int height, std::string title, bool vsync, bool cursor)
+		: m_width{ width }, m_height{ height }, m_title{ title }, m_aspect_ratio{ (float)width / (float)height },
+		m_open{ false }, m_window{ nullptr }, m_vsync{ vsync }, m_cursor{ cursor }
 	{
 		
 	}
 
-	Window::Window(EventBus* event_bus)
-	{
-		Window(event_bus, 800, 600, "Split Engine", true, true);
-	}
+	Window::Window() : Window(800, 600, "Split Engine") {}
 
 	Window::~Window()
 	{
@@ -82,6 +78,11 @@ namespace Split
 	float Window::aspect_ratio(void)
 	{
 		return m_aspect_ratio;
+	}
+
+	void Window::event_bus_subscribe(void)
+	{
+	
 	}
 
 	/* GLFW callback functions

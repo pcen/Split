@@ -4,14 +4,14 @@
 namespace Split
 {
 
-	Application::Application() : m_running{ false }
+	Application::Application() : m_running{ false }, m_window{ nullptr }
 	{
 
 	}
 
 	Application::~Application()
 	{
-
+		delete m_window;
 	}
 
 	bool Application::running(void)
@@ -19,10 +19,11 @@ namespace Split
 		return m_running;
 	}
 
-	void Application::init(EventBus* bus)
+	void Application::init(void)
 	{
-		set_event_bus(bus);
 		event_bus_subscribe();
+		m_window = new Window();
+		m_window->init();
 	}
 
 	void Application::launch(void)
@@ -33,7 +34,10 @@ namespace Split
 
 	void Application::run(void)
 	{
-		while (running()) {}
+		while (running())
+		{
+			m_window->update();
+		}
 	}
 
 	void Application::on_window_close(WindowClose& wc)

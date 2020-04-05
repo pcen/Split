@@ -7,28 +7,40 @@
 namespace Split
 {
 	extern Split::Application* create_application(void);
-	
-	static bool root_initialized      = false;
 
-	static Application* s_application = nullptr;
-	static EventBus* s_event_bus      = nullptr;
+	Root* Root::root = nullptr;
 
-	void Root::init(int argc, char* argv[])
+	Root::Root() {}
+
+	Root::~Root() {}
+
+	Root* Root::get_root(void)
 	{
-		if (root_initialized)
+		if (Root::root == nullptr)
+			Root::root = new Root();
+		return Root::root;
+	}
+
+	void Root::run(int argc, char* argv[])
+	{
+		if (m_initialized)
 			return;
 
 		create_systems();
 		init_systems();
-		root_initialized = true;
+		m_initialized = true;
 		s_application->launch();
 		cleanup_systems();
+	}
 
+	EventBus* Root::event_bus(void)
+	{
+		return Root::root->s_event_bus;
 	}
 
 	void Root::create_systems(void)
 	{
-		if (root_initialized)
+		if (m_initialized)
 			return;
 
 		s_event_bus = new EventBus();
@@ -37,15 +49,15 @@ namespace Split
 
 	void Root::init_systems(void)
 	{
-		if (root_initialized)
+		if (m_initialized)
 			return;
 
-		s_application->init(s_event_bus);
+		s_application->init();
 	}
 
 	void Root::cleanup_systems(void)
 	{
-		if (!root_initialized)
+		if (!m_initialized)
 			return;
 
 		delete s_application;

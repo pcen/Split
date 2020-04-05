@@ -3,7 +3,8 @@
 
 int main(int argc, char* argv[])
 {
-	Split::Root::init(argc, argv);
+	Split::Root::get_root()->run(argc, argv);
+	delete Split::Root::get_root();
 	return 0;
 }
 
