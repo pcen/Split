@@ -2,6 +2,7 @@
 #define WINDOW_EVENTS_H
 
 #include "event.h"
+#include "input/mouse_data.h"
 
 namespace Split
 {
@@ -96,6 +97,8 @@ namespace Split
 	public:
 		MouseMove(float x, float y, float dx, float dy)
 			: m_x{ x }, m_y{ y }, m_dx{ dx }, m_dy{ dy } {}
+		MouseMove(mouse_data mouse)
+			: m_x{ mouse.x }, m_y{ mouse.y }, m_dx{ mouse.dx }, m_dy{ mouse.dy } {}
 		~MouseMove() {}
 
 		inline float x(void) { return m_x; }

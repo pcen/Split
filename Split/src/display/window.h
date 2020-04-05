@@ -2,8 +2,9 @@
 #define WINDOW_H
 
 #include "events/event_bus_client.h"
+#include "input/mouse_data.h"
 
-/* Forward declare to avoid glfw header
+/* Forward declare to avoid glfw header in application
  */
 struct GLFWwindow;
 
@@ -29,6 +30,7 @@ namespace Split
 		bool m_open;
 
 		GLFWwindow* m_window;
+		mouse_data m_mouse;
 
 		int m_width, m_height;
 		float m_aspect_ratio;

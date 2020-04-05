@@ -62,7 +62,6 @@ namespace Split
 	{
 		friend class Root;
 	public:
-
 		EventBus::~EventBus() {}
 
 		template<class T, class E> void add_callback(T* instance, void(T::* method)(E&))

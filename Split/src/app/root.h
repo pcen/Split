@@ -8,6 +8,7 @@ namespace Split
 	 */
 	class Application;
 	class EventBus;
+	class Input;
 
 	class Root
 	{
@@ -18,10 +19,10 @@ namespace Split
 		
 		/* Access to single event bus
 		 */
-		static EventBus* event_bus(void);
+		static std::shared_ptr<EventBus> event_bus(void);
 
 	private:
-		static Root* root;
+		static Root* root_instance;
 		Root();
 
 		void create_systems(void);
@@ -30,8 +31,11 @@ namespace Split
 
 		bool m_initialized = false;
 
-		Application* s_application = nullptr;
-		EventBus* s_event_bus      = nullptr;
+		/* Initialized by Root class at engine entry
+		 */
+		std::unique_ptr<Application> s_application;
+		std::shared_ptr<EventBus>    s_event_bus;
+		std::unique_ptr<Input>       s_input;
 	};
 
 }

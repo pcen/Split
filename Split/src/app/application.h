@@ -24,7 +24,9 @@ namespace Split
 	private:
 		void event_bus_subscribe(void) override;
 
-		Window* m_window;
+		virtual void do_something(void) = 0;
+
+		std::unique_ptr<Window> m_window;
 
 		bool m_running;
 	};

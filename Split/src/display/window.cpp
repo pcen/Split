@@ -18,10 +18,7 @@ namespace Split
 
 	Window::Window() : Window(800, 600, "Split Engine") {}
 
-	Window::~Window()
-	{
-
-	}
+	Window::~Window() {}
 
 	void Window::init(void)
 	{
@@ -90,7 +87,8 @@ namespace Split
 	static void mouse_move_callback(GLFWwindow* window, double xpos, double ypos)
 	{
 		Window* user = (Window*)glfwGetWindowUserPointer(window);
-		// TODO: add mouse struct
+		user->m_mouse.update(xpos, ypos);
+		user->post_event(MouseMove(user->m_mouse));
 	}
 
 	static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)

@@ -6,6 +6,11 @@
 #include "app/application.h"
 #include "app/root.h"
 
+/* Split/src/input
+ */
+#include "input/input.h"
+
+
 #include "app/entrypoint.h"
 
 #endif /* SPLIT */

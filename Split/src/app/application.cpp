@@ -4,15 +4,9 @@
 namespace Split
 {
 
-	Application::Application() : m_running{ false }, m_window{ nullptr }
-	{
+	Application::Application() : m_running{ false }, m_window{ nullptr } {}
 
-	}
-
-	Application::~Application()
-	{
-		delete m_window;
-	}
+	Application::~Application() {}
 
 	bool Application::running(void)
 	{
@@ -22,7 +16,7 @@ namespace Split
 	void Application::init(void)
 	{
 		event_bus_subscribe();
-		m_window = new Window();
+		m_window = std::unique_ptr<Window>(new Window());
 		m_window->init();
 	}
 
@@ -36,6 +30,7 @@ namespace Split
 	{
 		while (running())
 		{
+			do_something();
 			m_window->update();
 		}
 	}
