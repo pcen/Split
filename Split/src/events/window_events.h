@@ -21,7 +21,7 @@ namespace Split
 		inline std::string str(void) const override
 		{
 			std::stringstream ss;
-			ss << "Window Resize (" << width << ", " << height << ")";
+			ss << "Window Resize (" << m_width << ", " << m_height << ")";
 			return ss.str();
 		}
 

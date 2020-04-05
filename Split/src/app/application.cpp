@@ -19,9 +19,10 @@ namespace Split
 		return m_running;
 	}
 
-	void Application::init(void)
+	void Application::init(EventBus* bus)
 	{
-
+		set_event_bus(bus);
+		event_bus_subscribe();
 	}
 
 	void Application::launch(void)
@@ -33,6 +34,16 @@ namespace Split
 	void Application::run(void)
 	{
 		while (running()) {}
+	}
+
+	void Application::on_window_close(WindowClose& wc)
+	{
+		m_running = false;
+	}
+
+	void Application::event_bus_subscribe(void)
+	{
+		callback_subscribe(&Application::on_window_close);
 	}
 
 }

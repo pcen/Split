@@ -2,13 +2,16 @@
 #include "root.h"
 
 #include "app/application.h"
+#include "events/event_bus.h"
 
 namespace Split
 {
 	extern Split::Application* create_application(void);
-	static bool root_initialized = false;
+	
+	static bool root_initialized      = false;
 
 	static Application* s_application = nullptr;
+	static EventBus* s_event_bus      = nullptr;
 
 	void Root::init(int argc, char* argv[])
 	{
@@ -28,6 +31,7 @@ namespace Split
 		if (root_initialized)
 			return;
 
+		s_event_bus = new EventBus();
 		s_application = create_application();
 	}
 
@@ -36,7 +40,7 @@ namespace Split
 		if (root_initialized)
 			return;
 
-		s_application->init();
+		s_application->init(s_event_bus);
 	}
 
 	void Root::cleanup_systems(void)
@@ -45,6 +49,7 @@ namespace Split
 			return;
 
 		delete s_application;
+		delete s_event_bus;
 	}
 
 }
