@@ -39,7 +39,8 @@ project "Split"
 		"%{prj.name}/src",
 		"%{prj.name}/dependencies/SPDLOG/include",
 		"%{prj.name}/dependencies/GLFW/include",
-		"%{prj.name}/dependencies/GLAD/include"
+		"%{prj.name}/dependencies/GLAD/include",
+		"%{prj.name}/dependencies/GLM"
 	}
 
 	links

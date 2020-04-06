@@ -16,7 +16,7 @@ namespace Split
 		~Root();
 		static Root* get_root(void);
 		void run(int argc, char* argv[]);
-		
+
 		/* Access to single event bus
 		 */
 		static std::shared_ptr<EventBus> event_bus(void);

@@ -11,6 +11,7 @@ cpp.hint
 # Submodules
 /Split/dependencies/SPDLOG
 /Split/dependencies/GLFW
+/Split/dependencies/GLM
 
 # Other Dependencies
 /Split/dependencies/GLAD

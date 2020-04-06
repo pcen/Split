@@ -4,3 +4,6 @@
 [submodule "Split/dependencies/SPDLOG"]
 	path = Split/dependencies/SPDLOG
 	url = https://github.com/gabime/spdlog
+[submodule "Split/dependencies/GLM"]
+	path = Split/dependencies/GLM
+	url = https://github.com/g-truc/glm
