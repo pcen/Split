@@ -111,7 +111,6 @@ namespace Split
 
 	unsigned int Shader::compile_shader(const std::string& source, unsigned int kind)
 	{
-		int status;
 		const char* shader = source.c_str();
 		unsigned int shader_id = glCreateShader(kind);
 		glShaderSource(shader_id, 1, &shader, 0);
@@ -157,7 +156,7 @@ namespace Split
 		glGetProgramInterfaceiv(m_id, GL_UNIFORM, GL_ACTIVE_RESOURCES, &count);
 
 		for (int i = 0; i < count; i++) {
-			glGetProgramResourceiv(m_id, GL_UNIFORM, i, queries.size(), queries.data(), results.size(), 0, results.data());
+			glGetProgramResourceiv(m_id, GL_UNIFORM, i, (GLsizei)queries.size(), queries.data(), (GLsizei)results.size(), 0, results.data());
 			std::string uniform_name((char*)name.data(), name.size() - 1);
 			m_uniforms[uniform_name] = results.at(1);
 		}

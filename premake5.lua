@@ -90,7 +90,8 @@ project "TestApp"
 	includedirs
 	{
 		"Split/dependencies/SPDLOG/include",
-		"Split/src"
+		"Split/src",
+		"Split/dependencies/GLM"
 	}
 
 	links
