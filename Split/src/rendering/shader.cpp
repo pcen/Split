@@ -24,16 +24,16 @@ namespace Split
 	void Shader::bind(void)
 	{
 		if (!m_bound) {
-			m_bound = true;
 			glUseProgram(m_id);
+			m_bound = true;
 		}
 	}
 
 	void Shader::unbind(void)
 	{
 		if (m_bound) {
-			m_bound = false;
 			glUseProgram(0);
+			m_bound = false;
 		}
 	}
 
@@ -125,8 +125,12 @@ namespace Split
 	{
 		bool status = true;
 		m_id = glCreateProgram();
-		unsigned int vertex_id = compile_shader(vertex, GL_VERTEX_SHADER);
-		unsigned int pixel_id = compile_shader(pixel, GL_FRAGMENT_SHADER);
+
+		std::string vertex_code = read_file(vertex);
+		std::string pixel_code = read_file(pixel);
+
+		unsigned int vertex_id = compile_shader(vertex_code, GL_VERTEX_SHADER);
+		unsigned int pixel_id = compile_shader(pixel_code, GL_FRAGMENT_SHADER);
 		glAttachShader(m_id, vertex_id);
 		glAttachShader(m_id, pixel_id);
 

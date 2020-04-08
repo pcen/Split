@@ -10,6 +10,11 @@
  */
 #include "input/input.h"
 
+/* Split/src/rendering
+ */
+#include "rendering/vertex_array.h"
+#include "rendering/index_buffer.h"
+#include "rendering/vertex_buffer.h"
 
 #include "app/entrypoint.h"
 

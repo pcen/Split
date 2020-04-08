@@ -21,14 +21,12 @@ namespace Split
 
 		virtual void on_window_close(WindowClose& wc);
 
-	private:
-		void event_bus_subscribe(void) override;
-
-		virtual void do_something(void) = 0;
-
+	protected:
 		std::unique_ptr<Window> m_window;
 
+	private:
 		bool m_running;
+		void event_bus_subscribe(void) override;
 	};
 
 	/* client returns application

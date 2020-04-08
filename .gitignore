@@ -7,6 +7,7 @@ cpp.hint
 # Directories
 **/bin
 **/bin_int
+**/resources
 
 # Submodules
 /Split/dependencies/SPDLOG
