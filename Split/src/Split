@@ -12,9 +12,10 @@
 
 /* Split/src/rendering
  */
+#include "rendering/shaders/shader.h"
 #include "rendering/vertex_array.h"
-#include "rendering/index_buffer.h"
-#include "rendering/vertex_buffer.h"
+#include "rendering/buffers/index_buffer.h"
+#include "rendering/buffers/vertex_buffer.h"
 
 #include "app/entrypoint.h"
 

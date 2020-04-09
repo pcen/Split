@@ -2,8 +2,8 @@
 #include "vertex_array.h"
 
 #include "glad/glad.h"
-#include "index_buffer.h"
-#include "vertex_buffer.h"
+#include "buffers/index_buffer.h"
+#include "buffers/vertex_buffer.h"
 
 namespace Split
 {
@@ -64,8 +64,10 @@ namespace Split
 	void VertexArray::print(void)
 	{
 		std::cerr << "=== Vertex Array Data ===\n";
-		m_vertex_buffer->print();
-		m_index_buffer->print();
+		if (m_vertex_buffer)
+			m_vertex_buffer->print();
+		if (m_index_buffer)
+			m_index_buffer->print();
 		std::cerr << "=== Vertex Array Data End ===\n";
 	}
 

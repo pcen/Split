@@ -1,6 +1,13 @@
 #include "pch.h"
 #include "application.h"
 
+#include "rendering/buffers/index_buffer.h"
+#include "rendering/vertex_array.h"
+#include "rendering/buffers/vertex_buffer.h"
+#include "rendering/shaders/shader.h"
+
+#include "glad/glad.h"
+
 namespace Split
 {
 
@@ -28,9 +35,28 @@ namespace Split
 
 	void Application::run(void)
 	{
+		unsigned int indeces[3] = {
+			0, 1, 2
+		};
+		float verts[3 * 3] = {
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			 0.0f,  0.5f, 0.0f
+		};
+		Split::Shader sh("C:\\cygwin64\\home\\Paul\\Dev\\Split\\Split\\src\\resources\\vert.glsl",
+						 "C:\\cygwin64\\home\\Paul\\Dev\\Split\\Split\\src\\resources\\pixel.glsl");
+		sh.bind();
+
+		Split::VertexBuffer vb(verts, 3 * 3, GL_STATIC_DRAW);
+		vb.attributes = { {"points", 3 } };
+
+		Split::IndexBuffer ib(indeces, 3, GL_STATIC_DRAW);
+
+		Split::VertexArray va(&ib, &vb);
+
 		while (running())
 		{
-			do_something();
+			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
 			m_window->update();
 		}
 	}
