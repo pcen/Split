@@ -9,12 +9,7 @@ cpp.hint
 **/bin_int
 **/resources
 
-# Submodules
-/Split/dependencies/SPDLOG
-/Split/dependencies/GLFW
-/Split/dependencies/GLM
-
-# Other Dependencies
+# Dependencies
 /Split/dependencies/GLAD
 
 # Scripts
