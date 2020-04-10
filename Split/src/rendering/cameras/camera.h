@@ -23,7 +23,8 @@ namespace Split
 		void set_sensitivity(float sensitivity);
 		void set_speed(float speed);
 
-		void on_keyboard_press(KeyPress& key_press);
+		void update(void);
+
 		void on_mouse_move(MouseMove& mouse);
 
 	private:
@@ -32,9 +33,9 @@ namespace Split
 		float m_pitch, m_yaw, m_roll;
 		float m_sensitivity, m_speed;
 
+		void keyboard_move(direction move);
 		void event_bus_subscribe(void) override;
 		void update_view_matrix(void);
-		direction key_to_direction(int key);
 	};
 
 }
