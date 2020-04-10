@@ -42,37 +42,23 @@ namespace Split
 		EVENT_TYPE_METHODS(WINDOW_CLOSE)
 	};
 
-
 	/* Keyboard generated events
 	 */
 	class KeyPress : public Event
 	{
 	public:
-		KeyPress(int keycode) : m_keycode{ keycode } {}
+		KeyPress(int keycode, bool repeat) : m_keycode{ keycode }, m_repeat{ repeat } {}
 		~KeyPress() {}
 
 		inline int keycode(void) { return m_keycode; }
+		inline int is_repeat(void) { return m_repeat; }
 
 		inline std::string str(void) const override { return "Key Press"; }
 		EVENT_TYPE_METHODS(KEY_PRESS)
 
 	private:
 		int m_keycode;
-	};
-
-	class KeyRepeat : public Event
-	{
-	public:
-		KeyRepeat(int keycode) : m_keycode{ keycode } {}
-		~KeyRepeat() {}
-
-		inline int keycode(void) { return m_keycode; }
-
-		inline std::string str(void) const override { return "Key Press"; }
-		EVENT_TYPE_METHODS(KEY_REPEAT)
-
-	private:
-		int m_keycode;
+		bool m_repeat;
 	};
 
 	class KeyRelease : public Event

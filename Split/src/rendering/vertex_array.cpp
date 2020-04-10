@@ -47,11 +47,17 @@ namespace Split
 		return m_bound;
 	}
 
+	unsigned int VertexArray::get_index_count(void)
+	{
+		return m_index_count;
+	}
+
 	void VertexArray::attach_index_buffer(IndexBuffer* index_buffer)
 	{
 		bind();
 		index_buffer->bind();
 		m_index_buffer = index_buffer;
+		m_index_count = index_buffer->get_count();
 	}
 
 	void VertexArray::attach_vertex_buffer(VertexBuffer* vertex_buffer)

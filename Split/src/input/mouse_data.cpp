@@ -5,7 +5,7 @@ namespace Split
 {
 
 	mouse_data::mouse_data()
-		: x{ 0 }, y{ 0 }, dx{ 0.0f }, dy{ 0.0f } {}
+		: x{ 0 }, y{ 0 }, dx{ 0.0f }, dy{ 0.0f }, initialized{ false } {}
 
 	void mouse_data::update(double xpos, double ypos)
 	{
@@ -15,7 +15,7 @@ namespace Split
 			initialized = true;
 		}
 		dx = (float)xpos - x;
-		dy = (float)ypos - y;
+		dy = y - (float)ypos;
 		x = (float)xpos;
 		y = (float)ypos;
 	}

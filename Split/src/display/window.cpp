@@ -11,10 +11,7 @@ namespace Split
 
 	Window::Window(int width, int height, std::string title, bool vsync, bool cursor)
 		: m_width{ width }, m_height{ height }, m_title{ title }, m_aspect_ratio{ (float)width / (float)height },
-		m_open{ false }, m_window{ nullptr }, m_vsync{ vsync }, m_cursor{ cursor }
-	{
-		
-	}
+		m_open{ false }, m_window{ nullptr }, m_vsync{ vsync }, m_cursor{ cursor }, m_mouse() {}
 
 	Window::Window() : Window(800, 600, "Split Engine") {}
 
@@ -77,10 +74,7 @@ namespace Split
 		return m_aspect_ratio;
 	}
 
-	void Window::event_bus_subscribe(void)
-	{
-	
-	}
+	void Window::event_bus_subscribe(void) {}
 
 	/* GLFW callback functions
 	 */
@@ -117,10 +111,10 @@ namespace Split
 		Window* user = (Window*)glfwGetWindowUserPointer(window);
 		switch (action) {
 		case GLFW_PRESS:
-			user->post_event(KeyPress(key));
+			user->post_event(KeyPress(key, false));
 			break;
 		case GLFW_REPEAT:
-			user->post_event(KeyRepeat(key));
+			user->post_event(KeyPress(key, true));
 			break;
 		case GLFW_RELEASE:
 			user->post_event(KeyRelease(key));

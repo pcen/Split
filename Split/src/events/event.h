@@ -16,8 +16,8 @@ namespace Split
 	enum class event_type
 	{
 		GENERIC = 0, WINDOW_CLOSE = 1, WINDOW_RESIZE = 2,
-		KEY_PRESS = 3, KEY_RELEASE = 4, KEY_REPEAT = 5,
-		MOUSE_PRESS = 6, MOUSE_RELEASE = 7, MOUSE_MOVE = 8, MOUSE_SCROLL = 9
+		KEY_PRESS = 3, KEY_RELEASE = 4,
+		MOUSE_PRESS = 5, MOUSE_RELEASE = 6, MOUSE_MOVE = 7, MOUSE_SCROLL = 8
 	};
 
 	static const std::string event_names[10] =

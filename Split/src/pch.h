@@ -2,11 +2,10 @@
 #define PCH_H
 
 #include <memory>
-
+#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <sstream>
-
 #include <unordered_map>
 #include <vector>
 
@@ -20,5 +19,6 @@
  */
 #include "glm/glm.hpp"
 #include "glm/gtc/type_ptr.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 #endif /* PCH_H */
