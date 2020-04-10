@@ -4,15 +4,6 @@
 #include "events/window_events.h"
 #include "display/window.h"
 #include "rendering/cameras/camera.h"
-#include "rendering/buffers/index_buffer.h"
-#include "rendering/vertex_array.h"
-#include "rendering/buffers/vertex_buffer.h"
-#include "rendering/shaders/shader.h"
-#include "rendering/renderer.h"
-#include "rendering/cameras/camera.h"
-#include "utils/geometry/cube.h"
-
-#include "glad/glad.h"
 
 namespace Split
 {
