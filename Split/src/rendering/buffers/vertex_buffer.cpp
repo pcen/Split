@@ -130,4 +130,9 @@ namespace Split
 		std::cerr << "\n";
 	}
 
+	std::shared_ptr<VertexBuffer> create_vertex_buffer(float* buffer, unsigned int count, unsigned int mode)
+	{
+		return std::shared_ptr<VertexBuffer>(new VertexBuffer(buffer, count, mode));
+	}
+
 }

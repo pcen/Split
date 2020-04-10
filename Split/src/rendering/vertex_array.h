@@ -10,8 +10,7 @@ namespace Split
 	class VertexArray
 	{
 	public:
-		VertexArray();
-		VertexArray(IndexBuffer* index_buffer, VertexBuffer* vertex_buffer);
+		VertexArray(std::shared_ptr<IndexBuffer> index_buffer, std::shared_ptr<VertexBuffer> vertex_buffer);
 		~VertexArray();
 
 		void bind(void);
@@ -19,17 +18,19 @@ namespace Split
 		bool is_bound(void);
 		unsigned int get_index_count(void);
 
-		void attach_index_buffer(IndexBuffer* index_buffer);
-		void attach_vertex_buffer(VertexBuffer* vertex_buffer);
+		void attach_index_buffer(std::shared_ptr<IndexBuffer> index_buffer);
+		void attach_vertex_buffer(std::shared_ptr<VertexBuffer> vertex_buffer);
 
 		void print(void);
 
 	private:
 		unsigned int m_id, m_index_count;
 		bool m_bound;
-		IndexBuffer* m_index_buffer;
-		VertexBuffer* m_vertex_buffer;
+		std::shared_ptr<IndexBuffer> m_index_buffer;
+		std::shared_ptr<VertexBuffer> m_vertex_buffer;
 	};
+
+	std::shared_ptr<VertexArray> create_vertex_array(std::shared_ptr<IndexBuffer> index_buffer, std::shared_ptr<VertexBuffer> vertex_buffer);
 
 }
 

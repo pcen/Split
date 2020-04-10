@@ -1,12 +1,15 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
-#include "display/window.h"
-#include "events/window_events.h"
 #include "events/event_bus_client.h"
 
 namespace Split
 {
+	/* Forward declerations
+	 */
+	class WindowClose;
+	class Window;
+	class Camera;
 
 	class Application : public EventBusClient
 	{
@@ -18,11 +21,13 @@ namespace Split
 		virtual void init(void);
 		virtual void launch(void);
 		virtual void run(void);
+		virtual void update(void);
 
 		virtual void on_window_close(WindowClose& wc);
 
 	protected:
-		std::unique_ptr<Window> m_window;
+		std::unique_ptr<Split::Window> m_window;
+		std::unique_ptr<Split::Camera> m_camera;
 
 	private:
 		bool m_running;

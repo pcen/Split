@@ -24,8 +24,8 @@ namespace Split
 	{
 		m_front = glm::vec3(0.0f, 0.0f, -1.0f);
 		m_up = glm::vec3(0.0f, 1.0f, 0.0f);
-		m_speed = 4.0f;
-		m_sensitivity = 0.02f;
+		m_speed = 0.5f;
+		m_sensitivity = 0.5f;
 		m_yaw = -90.0f;
 		m_pitch = 0.0f;
 		m_roll = 0.0f;
@@ -81,8 +81,8 @@ namespace Split
 
 	void Camera::on_mouse_move(MouseMove& mouse)
 	{
-		m_yaw += mouse.dx();
-		m_pitch += mouse.dy();
+		m_yaw += mouse.dx() * m_sensitivity;
+		m_pitch += mouse.dy() * m_sensitivity;
 
 		if (m_pitch > 89.0f)
 			m_pitch = 89.0f;

@@ -58,6 +58,7 @@ namespace Split
 		std::vector<float> m_data;
 	};
 
+	std::shared_ptr<VertexBuffer> create_vertex_buffer(float* buffer, unsigned int count, unsigned int mode);
 }
 
 #endif /* VERTEX_BUFFER_H */

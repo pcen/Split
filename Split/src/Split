@@ -10,12 +10,22 @@
  */
 #include "input/input.h"
 
+/* Split/src/display
+ */
+#include "display/window.h"
+
 /* Split/src/rendering
  */
 #include "rendering/shaders/shader.h"
 #include "rendering/vertex_array.h"
 #include "rendering/buffers/index_buffer.h"
 #include "rendering/buffers/vertex_buffer.h"
+#include "rendering/renderer.h"
+#include "rendering/cameras/camera.h"
+
+/* Split/src/utils/geometry
+ */
+#include "utils/geometry/cube.h"
 
 #include "app/entrypoint.h"
 

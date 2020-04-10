@@ -69,4 +69,9 @@ namespace Split
 		std::cerr << "\n\n";
 	}
 
+	std::shared_ptr<IndexBuffer> create_index_buffer(unsigned int* buffer, unsigned int count, unsigned int mode)
+	{
+		return std::shared_ptr<IndexBuffer>(new IndexBuffer(buffer, count, mode));
+	}
+
 }

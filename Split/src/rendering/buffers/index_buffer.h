@@ -25,6 +25,7 @@ namespace Split
 		std::vector<unsigned int> m_data;
 	};
 
+	std::shared_ptr<IndexBuffer> create_index_buffer(unsigned int* buffer, unsigned int count, unsigned int mode);
 }
 
 #endif /* INDEX_BUFFER_H */
