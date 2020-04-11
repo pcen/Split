@@ -24,11 +24,12 @@ namespace Split
 	{
 		m_front = glm::vec3(0.0f, 0.0f, -1.0f);
 		m_up = glm::vec3(0.0f, 1.0f, 0.0f);
-		m_speed = 0.5f;
+		m_speed = 6.0f;
 		m_sensitivity = 0.5f;
 		m_yaw = -90.0f;
 		m_pitch = 0.0f;
 		m_roll = 0.0f;
+		m_real_speed = 0.0f;
 		update_view_matrix();
 		event_bus_subscribe();
 	}
@@ -58,8 +59,9 @@ namespace Split
 		m_speed = speed;
 	}
 
-	void Camera::update(void)
+	void Camera::update(double dt)
 	{
+		m_real_speed = m_speed * (float)dt;
 		if (Input::key_pressed(GLFW_KEY_W))
 			keyboard_move(direction::FORWARD);
 		if (Input::key_pressed(GLFW_KEY_S))
@@ -100,22 +102,22 @@ namespace Split
 	{
 		switch (move) {
 		case direction::FORWARD:
-			m_position += m_front * m_speed;
+			m_position += m_front * m_real_speed;
 			break;
 		case direction::BACKWARD:
-			m_position -= m_front * m_speed;
+			m_position -= m_front * m_real_speed;
 			break;
 		case direction::LEFT:
-			m_position -= normalized_x(m_front, m_up) * m_speed;
+			m_position -= normalized_x(m_front, m_up) * m_real_speed;
 			break;
 		case direction::RIGHT:
-			m_position += normalized_x(m_front, m_up) * m_speed;
+			m_position += normalized_x(m_front, m_up) * m_real_speed;
 			break;
 		case direction::UP:
-			m_position += normalized_x(normalized_x(m_front, m_up), m_front) * m_speed;
+			m_position += normalized_x(normalized_x(m_front, m_up), m_front) * m_real_speed;
 			break;
 		case direction::DOWN:
-			m_position -= normalized_x(normalized_x(m_front, m_up), m_front) * m_speed;
+			m_position -= normalized_x(normalized_x(m_front, m_up), m_front) * m_real_speed;
 			break;
 		case direction::NONE:
 		default:

@@ -14,7 +14,7 @@ namespace Split
 	class Window : public EventBusClient
 	{
 	public:
-		Window(int width, int height, std::string title, bool vsync = true, bool cursor = true);
+		Window(int width, int height, std::string title, bool vsync = false, bool cursor = true);
 		Window();
 		~Window();
 

@@ -10,6 +10,7 @@ namespace Split
 	class WindowClose;
 	class Window;
 	class Camera;
+	class Timer;
 
 	class Application : public EventBusClient
 	{
@@ -17,7 +18,6 @@ namespace Split
 		Application();
 		virtual ~Application();
 
-		virtual bool running(void);
 		virtual void init(void);
 		virtual void launch(void);
 		virtual void run(void);
@@ -28,9 +28,10 @@ namespace Split
 	protected:
 		std::unique_ptr<Split::Window> m_window;
 		std::unique_ptr<Split::Camera> m_camera;
+		std::unique_ptr<Split::Timer> m_timer;
+		bool m_running;
 
 	private:
-		bool m_running;
 		void event_bus_subscribe(void) override;
 	};
 

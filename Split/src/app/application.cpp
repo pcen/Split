@@ -4,6 +4,7 @@
 #include "events/window_events.h"
 #include "display/window.h"
 #include "rendering/cameras/camera.h"
+#include "time.h"
 
 namespace Split
 {
@@ -12,17 +13,13 @@ namespace Split
 
 	Application::~Application() {}
 
-	bool Application::running(void)
-	{
-		return m_running;
-	}
-
 	void Application::init(void)
 	{
 		event_bus_subscribe();
 		m_window = std::unique_ptr<Window>(new Window());
 		m_window->init();
 		m_camera = std::unique_ptr<Camera>(new Camera({ 0.0f, 0.0f, 3.0f }));
+		m_timer = std::unique_ptr<Timer>(new Timer());
 	}
 
 	void Application::launch(void)
@@ -33,7 +30,7 @@ namespace Split
 
 	void Application::run(void)
 	{
-		while (running())
+		while (m_running)
 		{
 			update();
 		}
@@ -41,8 +38,9 @@ namespace Split
 
 	void Application::update(void)
 	{
+		m_timer->update_deltatime();
 		m_window->update();
-		m_camera->update();
+		m_camera->update(m_timer->get_deltatime());
 	}
 
 	void Application::on_window_close(WindowClose& wc)
