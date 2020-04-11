@@ -3,7 +3,10 @@
 
 namespace Split
 {
+	/* Forward declarations
+	 */
 	class VertexArray;
+	class Shader;
 
 	class Renderer
 	{
@@ -14,9 +17,8 @@ namespace Split
 		void clear(void);
 		void set_clear_colour(glm::vec3 colour);
 
-		void begin(void);
-		void push(VertexArray* vertex_array);
-		void push(std::shared_ptr<VertexArray>& vertex_array);
+		void begin(glm::mat4 view_matrix);
+		void push(std::shared_ptr<Shader>& shader, std::shared_ptr<VertexArray>& vertex_array, glm::mat4& transform = glm::mat4(1.0f));
 		void end(void);
 
 		void use_wireframe(bool use);
@@ -25,6 +27,7 @@ namespace Split
 
 	private:
 		glm::vec3 m_clear_colour;
+		glm::mat4 m_view_matrix;
 	};
 
 }

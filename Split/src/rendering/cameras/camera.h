@@ -18,7 +18,7 @@ namespace Split
 		Camera(glm::vec3 position);
 		~Camera();
 
-		glm::mat4 get_view_matrix(void);
+		glm::mat4& get_view_matrix(void);
 
 		void set_sensitivity(float sensitivity);
 		void set_speed(float speed);

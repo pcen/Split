@@ -38,7 +38,8 @@ namespace Split
 		bool validate_program(unsigned int program, unsigned int field);
 	};
 
-}
+	std::shared_ptr<Shader> create_shader(std::string vertex_shader, std::string pixel_shader);
 
+}
 
 #endif /* SHADER_H */

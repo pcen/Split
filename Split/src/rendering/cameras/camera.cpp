@@ -44,7 +44,7 @@ namespace Split
 		callback_subscribe(&Camera::on_mouse_move);
 	}
 
-	glm::mat4 Camera::get_view_matrix(void)
+	glm::mat4& Camera::get_view_matrix(void)
 	{
 		return m_view_matrix;
 	}

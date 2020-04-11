@@ -168,4 +168,9 @@ namespace Split
 		}
 	}
 
+	std::shared_ptr<Shader> create_shader(std::string vertex_shader, std::string pixel_shader)
+	{
+		return std::shared_ptr<Shader>(new Shader(vertex_shader, pixel_shader));
+	}
+
 }

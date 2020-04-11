@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "renderer.h"
 #include "rendering/vertex_array.h"
+#include "rendering/shaders/shader.h"
 #include "glad/glad.h"
 
 #define expand_colour(v) (v).x, (v).y, (v).z, 1.0f
@@ -39,18 +40,14 @@ namespace Split
 		m_clear_colour = colour;
 	}
 
-	void Renderer::begin(void)
+	void Renderer::begin(glm::mat4 view_matrix)
 	{
-	
+		m_view_matrix = view_matrix;
 	}
 
-	void Renderer::push(VertexArray* vertex_array)
+	void Renderer::push(std::shared_ptr<Shader>& shader, std::shared_ptr<VertexArray>& vertex_array, glm::mat4& transform)
 	{
-		draw_indexed_mesh(vertex_array);
-	}
-
-	void Renderer::push(std::shared_ptr<VertexArray>& vertex_array)
-	{
+		shader->set_uniform_mat4f("u_MVP", m_view_matrix * transform);
 		draw_indexed_mesh(vertex_array);
 	}
 
