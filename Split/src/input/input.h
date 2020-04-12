@@ -1,6 +1,7 @@
 #ifndef INPUT_H
 #define INPUT_H
 
+#include "key_codes.h"
 #include "events/event_bus_client.h"
 #include "events/window_events.h"
 #include "mouse_data.h"

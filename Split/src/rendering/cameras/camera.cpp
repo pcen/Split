@@ -62,17 +62,17 @@ namespace Split
 	void Camera::update(double dt)
 	{
 		m_real_speed = m_speed * (float)dt;
-		if (Input::key_pressed(GLFW_KEY_W))
+		if (Input::key_pressed(KEY_W))
 			keyboard_move(direction::FORWARD);
-		if (Input::key_pressed(GLFW_KEY_S))
+		if (Input::key_pressed(KEY_S))
 			keyboard_move(direction::BACKWARD);
-		if (Input::key_pressed(GLFW_KEY_A))
+		if (Input::key_pressed(KEY_A))
 			keyboard_move(direction::LEFT);
-		if (Input::key_pressed(GLFW_KEY_D))
+		if (Input::key_pressed(KEY_D))
 			keyboard_move(direction::RIGHT);
-		if (Input::key_pressed(GLFW_KEY_LEFT_SHIFT))
+		if (Input::key_pressed(KEY_LEFT_SHIFT))
 			keyboard_move(direction::DOWN);
-		if (Input::key_pressed(GLFW_KEY_SPACE))
+		if (Input::key_pressed(KEY_SPACE))
 			keyboard_move(direction::UP);
 	}
 
