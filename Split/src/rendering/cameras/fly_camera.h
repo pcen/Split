@@ -12,11 +12,11 @@ namespace Split
 
 	enum class direction;
 
-	class Camera : public EventBusListener
+	class FlyCamera : public EventBusListener
 	{
 	public:
-		Camera(glm::vec3 position);
-		~Camera();
+		FlyCamera(glm::vec3 position);
+		~FlyCamera();
 
 		glm::mat4& get_view_matrix(void);
 

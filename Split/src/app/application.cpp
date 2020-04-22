@@ -3,8 +3,10 @@
 
 #include "events/window_events.h"
 #include "display/window.h"
-#include "rendering/cameras/camera.h"
+#include "rendering/cameras/cameras.h"
+
 #include "time.h"
+#include "stb_image.h"
 
 namespace Split
 {
@@ -18,7 +20,7 @@ namespace Split
 		event_bus_subscribe();
 		m_window = std::unique_ptr<Window>(new Window());
 		m_window->init();
-		m_camera = std::unique_ptr<Camera>(new Camera({ 0.0f, 0.0f, 3.0f }));
+		m_camera = std::unique_ptr<MapCamera>(new MapCamera({ 0.0f, 0.0f, 3.0f }, m_window->get_size()));
 		m_timer = std::unique_ptr<Timer>(new Timer());
 	}
 

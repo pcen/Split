@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "utils.h"
 #include "logging/log.h"
+#include "stb_image.h"
 
 namespace Split
 {
@@ -19,6 +20,14 @@ namespace Split
 			core_log_error("Failed to read file \"{0}\"", filepath);
 		}
 		return contents;
+	}
+
+	unsigned char* load_image(std::string path, TextureFormat format, int* width, int* height, int* bpp, int channels, bool flip)
+	{
+		if (flip)
+			stbi_set_flip_vertically_on_load(1);
+
+		return stbi_load(path.c_str(), width, height, bpp, channels);
 	}
 
 }

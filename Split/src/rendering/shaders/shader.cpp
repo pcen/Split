@@ -160,9 +160,9 @@ namespace Split
 		int count;
 		glGetProgramInterfaceiv(m_id, GL_UNIFORM, GL_ACTIVE_RESOURCES, &count);
 		for (int i = 0; i < count; i++) {
-			glGetProgramResourceiv(m_id, GL_UNIFORM, i, queries.size(), &queries[0], results.size(), NULL, &results[0]);
+			glGetProgramResourceiv(m_id, GL_UNIFORM, i, (GLsizei)queries.size(), &queries[0], (GLsizei)results.size(), NULL, &results[0]);
 			name.resize(results[0]);
-			glGetProgramResourceName(m_id, GL_UNIFORM, i, name.size(), NULL, (char*)&name[0]);
+			glGetProgramResourceName(m_id, GL_UNIFORM, i, (GLsizei)name.size(), 0, (char*)&name[0]);
 			std::string uniform_name((char*)&name[0], name.size() - 1);
 			m_uniforms[uniform_name] = results[1];
 		}

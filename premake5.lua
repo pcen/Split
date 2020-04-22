@@ -40,7 +40,8 @@ project "Split"
 		"%{prj.name}/dependencies/SPDLOG/include",
 		"%{prj.name}/dependencies/GLFW/include",
 		"%{prj.name}/dependencies/GLAD/include",
-		"%{prj.name}/dependencies/GLM"
+		"%{prj.name}/dependencies/GLM",
+		"%{prj.name}/dependencies/STB"
 	}
 
 	links
@@ -57,7 +58,8 @@ project "Split"
 		{
 			"PLATFORM_WINDOWS",
 			"BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
+			"GLFW_INCLUDE_NONE",
+			"STB_IMAGE_IMPLEMENTATION"
 		}
 
 	filter "configurations:Debug"
@@ -91,7 +93,8 @@ project "TestApp"
 	{
 		"Split/dependencies/SPDLOG/include",
 		"Split/src",
-		"Split/dependencies/GLM"
+		"Split/dependencies/GLM",
+		"Split/dependencies/STB"
 	}
 
 	links

@@ -35,6 +35,7 @@ namespace Split
 		glfwSetWindowUserPointer(m_window, this);
 		glfwSetCursorPosCallback(m_window, mouse_move_callback);
 		glfwSetMouseButtonCallback(m_window, mouse_button_callback);
+		glfwSetCursorEnterCallback(m_window, mouse_enter_callback);
 		glfwSetScrollCallback(m_window, scroll_callback);
 		glfwSetKeyCallback(m_window, key_callback);
 		glfwSetWindowSizeCallback(m_window, window_size_callback);
@@ -72,6 +73,16 @@ namespace Split
 	float Window::aspect_ratio(void)
 	{
 		return m_aspect_ratio;
+	}
+
+	glm::ivec2 Window::get_size(void)
+	{
+		return {m_width, m_height};
+	}
+
+	bool Window::mouse_on_screen(void)
+	{
+		return m_mouse_on_screen;
 	}
 
 	void Window::event_bus_subscribe(void) {}
@@ -130,7 +141,7 @@ namespace Split
 		user->m_width = width;
 		user->m_height = height;
 		user->m_aspect_ratio = (float)width / (float)height;
-		glViewport(0, 0, width, height);
+		glViewport(0, 0, width, height); // TODO: remove opengl from this file
 		user->post_event(WindowResize(width, height));
 	}
 
@@ -139,6 +150,13 @@ namespace Split
 		Window* user = (Window*)glfwGetWindowUserPointer(window);
 		user->m_open = false;
 		user->post_event(WindowClose());
+	}
+
+	static void mouse_enter_callback(GLFWwindow* window, int entered)
+	{
+		Window* user = (Window*)glfwGetWindowUserPointer(window);
+		user->m_mouse_on_screen = (entered == GLFW_TRUE);
+		user->post_event(MouseWindowBorder(user->m_mouse_on_screen));
 	}
 
 }

@@ -18,6 +18,7 @@ namespace Split
 
 		inline unsigned int width(void) { return m_width; }
 		inline unsigned int height(void) { return m_height; }
+		inline glm::ivec2 dimensions(void) { return { (int)m_width, (int)m_height }; }
 
 		inline std::string str(void) const override
 		{
@@ -40,6 +41,26 @@ namespace Split
 
 		inline std::string str(void) const override { return "Window Close"; }
 		EVENT_TYPE_METHODS(WINDOW_CLOSE)
+	};
+
+	class MouseWindowBorder : public Event
+	{
+	public:
+		MouseWindowBorder(bool entered) : m_entered{entered} {}
+		~MouseWindowBorder() {}
+
+		inline bool entered(void) { return m_entered; }
+
+		inline std::string str(void) const override
+		{
+			std::stringstream ss;
+			ss << "Mouse Window Border: entered = " << (m_entered ? "true" : "false");
+			return ss.str();
+		}
+
+		EVENT_TYPE_METHODS(MOUSE_WINDOW_BORDER)
+	private:
+		bool m_entered;
 	};
 
 	/* Keyboard generated events

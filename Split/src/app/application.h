@@ -9,7 +9,8 @@ namespace Split
 	 */
 	class WindowClose;
 	class Window;
-	class Camera;
+	class FlyCamera;
+	class MapCamera;
 	class Timer;
 
 	class Application : public EventBusClient
@@ -27,7 +28,7 @@ namespace Split
 
 	protected:
 		std::unique_ptr<Split::Window> m_window;
-		std::unique_ptr<Split::Camera> m_camera;
+		std::unique_ptr<Split::MapCamera> m_camera;
 		std::unique_ptr<Split::Timer> m_timer;
 		bool m_running;
 

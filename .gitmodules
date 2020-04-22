@@ -7,3 +7,6 @@
 [submodule "Split/dependencies/GLM"]
 	path = Split/dependencies/GLM
 	url = https://github.com/g-truc/glm
+[submodule "Split/dependencies/STB"]
+	path = Split/dependencies/STB
+	url = https://github.com/nothings/stb
