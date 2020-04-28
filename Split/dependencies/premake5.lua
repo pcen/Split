@@ -3,8 +3,8 @@ project "GLFW"
 	language "C"
 	staticruntime "on"
 
-	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
-	objdir ("bin_int/" .. outputDir .. "/%{prj.name}")
+	targetdir ("bin/")
+	objdir ("obj/")
 
 	files
 	{
@@ -54,8 +54,8 @@ project "GLAD"
 	language "C"
 	staticruntime "on"
 
-	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
-	objdir ("bin_int/" .. outputDir .. "/%{prj.name}")
+	targetdir ("bin/")
+	objdir ("obj/")
 
 	files
 	{

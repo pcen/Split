@@ -7,10 +7,9 @@ workspace "Split"
 		"Release"
 	}
 
-startproject "TestApp"
+startproject "civ3"
 
-outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-testAppDir = "../TestApp"
+civ3dir = "../civ3"
 
 include "Split/dependencies"
 
@@ -24,8 +23,8 @@ project "Split"
 	pchheader "pch.h"
 	pchsource "%{prj.name}/src/pch.cpp"
 
-	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
-	objdir ("bin_int/" .. outputDir .. "/%{prj.name}")
+	targetdir ("bin/")
+	objdir ("obj/")
 
 	files
 	{
@@ -72,25 +71,26 @@ project "Split"
 		runtime "Release"
 		optimize "on"
 
-project "TestApp"
-	location "../TestApp"
+project "civ3"
+	location "../civ3"
 	kind "ConsoleApp"
 	staticruntime "on"
 	language "C++"
 	cppdialect "C++17"
 
-	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
-	objdir ("bin_int/" .. outputDir .. "/%{prj.name}")
+	targetdir (civ3dir .. "/bin/")
+	objdir (civ3dir .. "/obj/")
 
 	files
 	{
-		(testAppDir .. "/**.h"),
-		(testAppDir .. "/**.hpp"),
-		(testAppDir .. "/**.cpp")
+		(civ3dir .. "/src/**.h"),
+		(civ3dir .. "/src/**.hpp"),
+		(civ3dir .. "/src/**.cpp")
 	}
 
 	includedirs
 	{
+		civ3dir .. "/src/",
 		"Split/dependencies/SPDLOG/include",
 		"Split/src",
 		"Split/dependencies/GLM",

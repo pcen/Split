@@ -6,7 +6,6 @@
 #include "rendering/cameras/cameras.h"
 
 #include "time.h"
-#include "stb_image.h"
 
 namespace Split
 {

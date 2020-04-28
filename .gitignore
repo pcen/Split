@@ -6,7 +6,7 @@ cpp.hint
 
 # Directories
 **/bin
-**/bin_int
+**/obj
 **/resources
 
 # Dependencies
