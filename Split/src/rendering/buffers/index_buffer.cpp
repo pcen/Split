@@ -6,7 +6,7 @@ namespace Split
 {
 
 	IndexBuffer::IndexBuffer(unsigned int* buffer, unsigned int count, unsigned int mode)
-		: m_bound{ false }, m_id{ 0 }, m_count{ count }
+		: m_id{ 0 }, m_count{ count }
 	{
 		m_data = std::vector<unsigned int>(buffer, buffer + count);
 		glCreateBuffers(1, &m_id);
@@ -22,18 +22,12 @@ namespace Split
 
 	void IndexBuffer::bind(void)
 	{
-		if (!is_bound()) {
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id);
-			m_bound = true;
-		}
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id);
 	}
 
 	void IndexBuffer::unbind(void)
 	{
-		if (is_bound()) {
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-			m_bound = false;
-		}
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 
 	int IndexBuffer::get_count(void)
@@ -44,11 +38,6 @@ namespace Split
 	unsigned int IndexBuffer::get_id(void)
 	{
 		return m_id;
-	}
-
-	bool IndexBuffer::is_bound(void)
-	{
-		return m_bound;
 	}
 
 	std::vector<unsigned int>& IndexBuffer::data(void)

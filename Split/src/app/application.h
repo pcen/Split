@@ -5,9 +5,10 @@
 
 namespace Split
 {
-	/* Forward declerations
+	/* Forward declarations
 	 */
 	class WindowClose;
+	class KeyPress;
 	class Window;
 	class FlyCamera;
 	class MapCamera;
@@ -25,10 +26,11 @@ namespace Split
 		virtual void update(void);
 
 		virtual void on_window_close(WindowClose& wc);
+		virtual void on_key_press(KeyPress& key);
 
 	protected:
 		std::unique_ptr<Split::Window> m_window;
-		std::unique_ptr<Split::MapCamera> m_camera;
+		std::unique_ptr<Split::FlyCamera> m_camera;
 		std::unique_ptr<Split::Timer> m_timer;
 		bool m_running;
 

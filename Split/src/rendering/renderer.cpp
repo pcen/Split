@@ -9,12 +9,6 @@
 namespace Split
 {
 
-	void draw_indexed_mesh(VertexArray* vertex_array)
-	{
-		vertex_array->bind();
-		glDrawElements(GL_TRIANGLES, vertex_array->get_index_count(), GL_UNSIGNED_INT, nullptr);
-	}
-
 	void draw_indexed_mesh(std::shared_ptr<VertexArray>& vertex_array)
 	{
 		vertex_array->bind();

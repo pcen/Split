@@ -44,7 +44,6 @@ namespace Split
 
 		void bind(void);
 		void unbind(void);
-		bool is_bound(void);
 		std::vector<float>& data(void);
 
 		void print(void);
@@ -54,7 +53,6 @@ namespace Split
 		VertexAttributes attributes;
 	private:
 		unsigned int m_count, m_mode, m_id;
-		bool m_bound;
 		std::vector<float> m_data;
 	};
 

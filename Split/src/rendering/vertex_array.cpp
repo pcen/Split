@@ -8,11 +8,12 @@
 namespace Split
 {
 
-	VertexArray::VertexArray(std::shared_ptr<IndexBuffer> index_buffer, std::shared_ptr<VertexBuffer> vertex_buffer) : m_bound{ false }
+	VertexArray::VertexArray(std::shared_ptr<IndexBuffer> index_buffer, std::shared_ptr<VertexBuffer> vertex_buffer)
 	{
 		glGenVertexArrays(1, &m_id);
 		attach_index_buffer(index_buffer);
 		attach_vertex_buffer(vertex_buffer);
+		unbind();
 	}
 
 	VertexArray::~VertexArray()
@@ -22,23 +23,12 @@ namespace Split
 
 	void VertexArray::bind(void)
 	{
-		if (!is_bound()) {
-			glBindVertexArray(m_id);
-			m_bound = true;
-		}
+		glBindVertexArray(m_id);
 	}
 
 	void VertexArray::unbind(void)
 	{
-		if (is_bound()) {
-			glBindVertexArray(0);
-			m_bound = false;
-		}
-	}
-
-	bool VertexArray::is_bound(void)
-	{
-		return m_bound;
+		glBindVertexArray(0);
 	}
 
 	unsigned int VertexArray::get_index_count(void)
@@ -71,7 +61,7 @@ namespace Split
 		std::cerr << "=== Vertex Array Data End ===\n";
 	}
 
-	std::shared_ptr<VertexArray> create_vertex_array(std::shared_ptr<IndexBuffer> index_buffer, std::shared_ptr<VertexBuffer> vertex_buffer)
+	std::shared_ptr<VertexArray> create_vertex_array(std::shared_ptr<IndexBuffer>& index_buffer, std::shared_ptr<VertexBuffer>& vertex_buffer)
 	{
 		return std::shared_ptr<VertexArray>(new VertexArray(index_buffer, vertex_buffer));
 	}

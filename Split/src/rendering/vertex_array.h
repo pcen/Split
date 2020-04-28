@@ -15,7 +15,6 @@ namespace Split
 
 		void bind(void);
 		void unbind(void);
-		bool is_bound(void);
 		unsigned int get_index_count(void);
 
 		void attach_index_buffer(std::shared_ptr<IndexBuffer> index_buffer);
@@ -23,14 +22,13 @@ namespace Split
 
 		void print(void);
 
-	private:
-		unsigned int m_id, m_index_count;
-		bool m_bound;
 		std::shared_ptr<IndexBuffer> m_index_buffer;
 		std::shared_ptr<VertexBuffer> m_vertex_buffer;
+		unsigned int m_id, m_index_count;
+	private:
 	};
 
-	std::shared_ptr<VertexArray> create_vertex_array(std::shared_ptr<IndexBuffer> index_buffer, std::shared_ptr<VertexBuffer> vertex_buffer);
+	std::shared_ptr<VertexArray> create_vertex_array(std::shared_ptr<IndexBuffer>& index_buffer, std::shared_ptr<VertexBuffer>& vertex_buffer);
 
 }
 

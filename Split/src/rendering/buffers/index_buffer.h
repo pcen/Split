@@ -13,7 +13,6 @@ namespace Split
 		void bind(void);
 		void unbind(void);
 		int get_count(void);
-		bool is_bound(void);
 		unsigned int get_id(void);
 		std::vector<unsigned int>& data(void);
 
@@ -21,7 +20,6 @@ namespace Split
 
 	private:
 		unsigned int m_id, m_count;
-		bool m_bound;
 		std::vector<unsigned int> m_data;
 	};
 

@@ -4,7 +4,7 @@
 #include "events/window_events.h"
 #include "display/window.h"
 #include "rendering/cameras/cameras.h"
-
+#include "input/key_codes.h"
 #include "time.h"
 
 namespace Split
@@ -19,7 +19,7 @@ namespace Split
 		event_bus_subscribe();
 		m_window = std::unique_ptr<Window>(new Window());
 		m_window->init();
-		m_camera = std::unique_ptr<MapCamera>(new MapCamera({ 0.0f, 0.0f, 3.0f }, m_window->get_size()));
+		m_camera = std::unique_ptr<FlyCamera>(new FlyCamera({ 0.0f, 0.0f, 3.0f }));
 		m_timer = std::unique_ptr<Timer>(new Timer());
 	}
 
@@ -49,9 +49,16 @@ namespace Split
 		m_running = false;
 	}
 
+	void Application::on_key_press(KeyPress& key)
+	{
+		if (key.keycode() == KEY_ESCAPE)
+			m_running = false;
+	}
+
 	void Application::event_bus_subscribe(void)
 	{
 		callback_subscribe(&Application::on_window_close);
+		callback_subscribe(&Application::on_key_press);
 	}
 
 }

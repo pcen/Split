@@ -54,7 +54,7 @@ namespace Split
 	unsigned int VertexAttributes::get_stride(void) { return m_stride; }
 
 	VertexBuffer::VertexBuffer(float* buffer, unsigned int count, unsigned int mode)
-		: m_count{ count }, m_mode{ mode }, m_id{ 0 }, m_bound{ false }
+		: m_count{ count }, m_mode{ mode }, m_id{ 0 }
 	{
 		m_data = std::vector<float>(buffer, buffer + count);
 		glCreateBuffers(1, &m_id);
@@ -70,23 +70,12 @@ namespace Split
 
 	void VertexBuffer::bind(void)
 	{
-		if (!is_bound()) {
-			glBindBuffer(GL_ARRAY_BUFFER, m_id);
-			m_bound = true;
-		}
+		glBindBuffer(GL_ARRAY_BUFFER, m_id);
 	}
 
 	void VertexBuffer::unbind(void)
 	{
-		if (is_bound()) {
-			glBindBuffer(GL_ARRAY_BUFFER, 0);
-			m_bound = false;
-		}
-	}
-
-	bool VertexBuffer::is_bound(void)
-	{
-		return m_bound;
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
 	void VertexBuffer::enable_attributes(void)
