@@ -22,6 +22,9 @@
 /* Split/src/utils/geometry */
 #include "utils/geometry/cube.h"
 
+/* Split/src/defs */
+#include "defs/defs.h"
+
 /* Entry */
 #ifdef SPLIT_MAIN
 #include "app/entrypoint.h"
