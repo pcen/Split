@@ -83,15 +83,15 @@ namespace Split
 		bind();
 		for (int i = 0; i < attributes.size(); i++) {
 			vertex_attribute& a = attributes.at(i);
-			glEnableVertexAttribArray(i);
 			glVertexAttribPointer(
 				i,
 				a.count,
 				GL_FLOAT,
 				a.normalized ? GL_TRUE : GL_FALSE,
-				a.count * sizeof(float),
+				attributes.get_stride(),
 				(const void*)a.offset);
-		}
+			glEnableVertexAttribArray(i);
+			}
 	}
 
 	std::vector<float>& VertexBuffer::data(void)
