@@ -13,9 +13,8 @@ namespace Split
 		Texture2D(std::string path, TextureFormat format, int channels, int type);
 		~Texture2D();
 
-		void bind(unsigned int slot) override;
+		void bind(unsigned int slot = 0) override;
 		void unbind(void) override;
-		bool is_bound(void) override;
 		bool has_buffer(void) override;
 		void* get_buffer(void) override;
 		int get_bpp(void) override;

@@ -25,7 +25,7 @@ namespace Split
 
 		glGenTextures(1, &m_id);
 		glBindTexture(type, m_id);
-		glTexParameteri(type, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		glTexParameteri(type, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(type, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameteri(type, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameteri(type, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -38,24 +38,13 @@ namespace Split
 
 	void Texture2D::bind(unsigned int slot)
 	{
-		if (!is_bound()) {
-			glActiveTexture(gl_texture_slot(slot));
-			glBindTexture(m_type, m_id);
-			m_bound = true;
-		}
+		glActiveTexture(gl_texture_slot(slot));
+		glBindTexture(m_type, m_id);
 	}
 
 	void Texture2D::unbind(void)
 	{
-		if (is_bound()) {
-			glBindTexture(m_type, 0);
-			m_bound = false;
-		}
-	}
-
-	bool Texture2D::is_bound(void)
-	{
-		return m_bound;
+		glBindTexture(m_type, 0);
 	}
 
 	bool Texture2D::has_buffer(void)
