@@ -3,7 +3,7 @@
 
 #include "pch.h"
 
-/* Forward declarations
+/* Common forward declarations
  */
 namespace Split
 {

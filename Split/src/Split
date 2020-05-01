@@ -7,6 +7,7 @@
 
 /* Split/src/input */
 #include "input/input.h"
+#include "input/mouse_data.h"
 
 /* Split/src/display */
 #include "display/window.h"
@@ -25,6 +26,9 @@
 
 /* Split/src/defs */
 #include "defs/defs.h"
+
+/* Split/src/events */
+#include "events/event_bus_client.h"
 
 /* Entry */
 #ifdef SPLIT_MAIN
