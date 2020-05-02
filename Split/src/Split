@@ -19,7 +19,7 @@
 #include "rendering/buffers/index_buffer.h"
 #include "rendering/buffers/vertex_buffer.h"
 #include "rendering/textures/texture_2D.h"
-#include "rendering/cameras/cameras.h"
+#include "rendering/cameras/camera.h"
 
 /* Split/src/utils/geometry */
 #include "utils/geometry/cube.h"

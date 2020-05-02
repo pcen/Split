@@ -1,7 +1,8 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#ifndef FLY_CAMERA_H
+#define FLY_CAMERA_H
 
 #include "events/event_bus_client.h"
+#include "camera.h"
 
 namespace Split
 {
@@ -12,18 +13,18 @@ namespace Split
 
 	enum class direction;
 
-	class FlyCamera : public EventBusListener
+	class FlyCamera : public Camera, public EventBusListener
 	{
 	public:
 		FlyCamera(glm::vec3 position);
 		~FlyCamera();
 
-		glm::mat4& get_view_matrix(void);
+		glm::mat4& get_view_matrix(void) override;
 
 		void set_sensitivity(float sensitivity);
 		void set_speed(float speed);
 
-		void update(double dt);
+		void update(double dt) override;
 
 		void on_mouse_move(MouseMove& mouse);
 
@@ -40,4 +41,4 @@ namespace Split
 
 }
 
-#endif /* CAMERA_H */
+#endif /* FLY_CAMERA_H */
