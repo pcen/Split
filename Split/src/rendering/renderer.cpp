@@ -17,6 +17,7 @@ namespace Split
 
 	Renderer::Renderer() : m_clear_colour(1.0f, 0.0f, 1.0f)
 	{
+		use_wireframe(false);
 		use_depth_testing(true);
 		use_backface_culling(true);
 	}

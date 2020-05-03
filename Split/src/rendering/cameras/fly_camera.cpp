@@ -19,44 +19,30 @@ namespace Split
 		NONE
 	};
 
-	FlyCamera::FlyCamera(glm::vec3 position) : m_position{ position }
+	FlyCamera::FlyCamera(glm::vec3 position)
+		: m_position{ position }, m_front{ glm::vec3(0.0f, 0.0f, -1.0f) },
+		m_up{ glm::vec3(0.0f, 1.0f, 0.0f) }
 	{
-		m_front = glm::vec3(0.0f, 0.0f, -1.0f);
-		m_up = glm::vec3(0.0f, 1.0f, 0.0f);
 		m_speed = 6.0f;
 		m_sensitivity = 0.5f;
-		m_yaw = -90.0f;
-		m_pitch = 0.0f;
-		m_roll = 0.0f;
+		m_yaw = -90.0f; m_pitch = 0.0f; m_roll = 0.0f;
 		m_real_speed = 0.0f;
 		update_view_matrix();
 		event_bus_subscribe();
 	}
 
-	FlyCamera::~FlyCamera()
-	{
-		
-	}
+	FlyCamera::~FlyCamera() {}
 	
 	void FlyCamera::event_bus_subscribe(void)
 	{
 		callback_subscribe(&FlyCamera::on_mouse_move);
 	}
 
-	glm::mat4& FlyCamera::get_view_matrix(void)
-	{
-		return m_view_matrix;
-	}
+	glm::mat4& FlyCamera::get_matrix(void) { return m_view_matrix; }
 
-	void FlyCamera::set_sensitivity(float sensitivity)
-	{
-		m_sensitivity = sensitivity;
-	}
+	void FlyCamera::set_sensitivity(float sensitivity) { m_sensitivity = sensitivity; }
 
-	void FlyCamera::set_speed(float speed)
-	{
-		m_speed = speed;
-	}
+	void FlyCamera::set_speed(float speed) { m_speed = speed; }
 
 	void FlyCamera::update(double dt)
 	{
@@ -122,6 +108,7 @@ namespace Split
 		default:
 			/* don't update view matrix */
 			return;
+			break;
 		}
 		update_view_matrix();
 	}

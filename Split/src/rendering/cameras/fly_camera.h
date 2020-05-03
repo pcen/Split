@@ -19,7 +19,7 @@ namespace Split
 		FlyCamera(glm::vec3 position);
 		~FlyCamera();
 
-		glm::mat4& get_view_matrix(void) override;
+		glm::mat4& get_matrix(void) override;
 
 		void set_sensitivity(float sensitivity);
 		void set_speed(float speed);
