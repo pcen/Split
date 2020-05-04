@@ -18,6 +18,7 @@ project "Split"
 	kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"
+	systemversion "latest"
 	staticruntime "on"
 
 	pchheader "pch.h"
@@ -50,16 +51,11 @@ project "Split"
 		"opengl32.lib"
 	}
 
-	filter "system:windows"
-		systemversion "latest"
-
-		defines
-		{
-			"PLATFORM_WINDOWS",
-			"BUILD_DLL",
-			"GLFW_INCLUDE_NONE",
-			"STB_IMAGE_IMPLEMENTATION"
-		}
+	defines
+	{
+		"GLFW_INCLUDE_NONE",
+		"STB_IMAGE_IMPLEMENTATION"
+	}
 
 	filter "configurations:Debug"
 		defines "SPLIT_DEBUG"
@@ -74,9 +70,10 @@ project "Split"
 project "civ3"
 	location "../civ3"
 	kind "ConsoleApp"
-	staticruntime "on"
 	language "C++"
 	cppdialect "C++17"
+	systemversion "latest"
+	staticruntime "on"
 
 	targetdir (civ3dir .. "/bin/")
 	objdir (civ3dir .. "/obj/")
@@ -101,14 +98,6 @@ project "civ3"
 	{
 		"Split"
 	}
-
-	filter "system:windows"
-		systemversion "latest"
-
-		defines
-		{
-			"PLATFORM_WINDOWS"
-		}
 
 	filter "configurations:Debug"
 		defines "SPLIT_DEBUG"
