@@ -30,6 +30,9 @@
 /* Split/src/events */
 #include "events/event_bus_client.h"
 
+/* Split/src/logging */
+#include "logging/log.h"
+
 /* Entry */
 #ifdef SPLIT_MAIN
 #include "app/entrypoint.h"
