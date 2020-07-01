@@ -2,8 +2,6 @@
 #include "vertex_array.h"
 
 #include "glad/glad.h"
-#include "buffers/index_buffer.h"
-#include "buffers/vertex_buffer.h"
 
 namespace Split
 {

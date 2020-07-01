@@ -1,11 +1,11 @@
 #ifndef VERTEX_ARRAY_H
 #define VERTEX_ARRAY_H
 
+#include "rendering/buffers/index_buffer.h"
+#include "rendering/buffers/vertex_buffer.h"
+
 namespace Split
 {
-
-	class VertexBuffer;
-	class IndexBuffer;
 
 	class VertexArray
 	{

@@ -1,12 +1,11 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
+#include "rendering/vertex_array.h"
+#include "rendering/shaders/shader.h"
+
 namespace Split
 {
-	/* Forward declarations
-	 */
-	class VertexArray;
-	class Shader;
 
 	class Renderer
 	{

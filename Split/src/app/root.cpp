@@ -8,7 +8,6 @@
 
 namespace Split
 {
-	extern Split::Application* create_application(void);
 
 	Root* Root::root_instance = nullptr;
 
@@ -26,7 +25,7 @@ namespace Split
 		return Root::root_instance;
 	}
 
-	void Root::run(int argc, char* argv[])
+	void Root::run(int argc, char* argv[], Application* app)
 	{
 		if (m_initialized)
 			return;
@@ -34,7 +33,7 @@ namespace Split
 		Split::Log::init();
 		core_log_info("Root run start");
 
-		create_systems();
+		create_systems(app);
 		init_systems();
 
 		m_initialized = true;
@@ -44,12 +43,17 @@ namespace Split
 		cleanup_systems();
 	}
 
+	bool Root::is_initialized(void) const
+	{
+		return m_initialized;
+	}
+
 	std::shared_ptr<EventBus> Root::event_bus(void)
 	{
 		return Root::root_instance->s_event_bus;
 	}
 
-	void Root::create_systems(void)
+	void Root::create_systems(Application* app)
 	{
 		if (m_initialized) {
 			core_log_warn("Cannot create_systems: Root already initialized");
@@ -59,7 +63,7 @@ namespace Split
 		core_log_info("Creating systems...");
 		s_event_bus = std::shared_ptr<EventBus>(new EventBus());
 		s_input = std::unique_ptr<Input>(new Input());
-		s_application = std::unique_ptr<Application>(create_application());
+		s_application = std::unique_ptr<Application>(app);
 		core_log_info("Systems created");
 	}
 

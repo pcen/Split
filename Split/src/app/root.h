@@ -15,7 +15,9 @@ namespace Split
 	public:
 		~Root();
 		static Root* get_root(void);
-		void run(int argc, char* argv[]);
+		void run(int argc, char* argv[], Application* app);
+
+		bool is_initialized(void) const;
 
 		/* Access to single event bus
 		 */
@@ -25,7 +27,7 @@ namespace Split
 		static Root* root_instance;
 		Root();
 
-		void create_systems(void);
+		void create_systems(Application* app);
 		void init_systems(void);
 		void cleanup_systems(void);
 

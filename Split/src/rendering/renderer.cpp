@@ -1,7 +1,5 @@
 #include "pch.h"
 #include "renderer.h"
-#include "rendering/vertex_array.h"
-#include "rendering/shaders/shader.h"
 #include "glad/glad.h"
 
 #define expand_colour(v) (v).x, (v).y, (v).z, 1.0f

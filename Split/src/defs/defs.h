@@ -3,7 +3,7 @@
 
 #include "pch.h"
 
-/* Common forward declarations
+/* Forward declarations
  */
 namespace Split
 {
@@ -21,17 +21,11 @@ namespace Split
  */
 #define TEXTURE_2D 0x0DE1
 
-/* Ref names
+/* Typedefs
  */
 typedef std::shared_ptr<Split::VertexArray> va_ref;
 typedef std::shared_ptr<Split::IndexBuffer> ib_ref;
 typedef std::shared_ptr<Split::VertexBuffer> vb_ref;
 typedef std::shared_ptr<Split::Shader> shader_ref;
-
-/* Macro to serve client application to engine
- * use macro on the application class name that is derived from Split::Application
- * NOTE: macro use is *not* followed by a semicolon
- */
-#define set_split_app(app_name) Split::Application* Split::create_application(void) { return new app_name(); }
 
 #endif /* DEFS_H */
