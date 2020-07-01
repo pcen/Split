@@ -79,3 +79,35 @@ project "GLAD"
 	filter "configurations:Release"
 		runtime "Release"
 		optimize "on"
+
+project "IMGUI"
+	kind "StaticLib"
+	language "C++"
+	staticruntime "on"
+	systemversion "latest"
+	cppdialect "C++17"
+
+	targetdir ("bin/")
+	objdir ("obj/")
+
+	files
+	{
+		"imgui/imconfig.h",
+		"imgui/imgui.h",
+		"imgui/imgui.cpp",
+		"imgui/imgui_draw.cpp",
+		"imgui/imgui_internal.h",
+		"imgui/imgui_widgets.cpp",
+		"imgui/imstb_rectpack.h",
+		"imgui/imstb_textedit.h",
+		"imgui/imstb_truetype.h",
+		"imgui/imgui_demo.cpp"
+	}
+
+	filter "configurations:Debug"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		runtime "Release"
+		optimize "on"

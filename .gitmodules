@@ -10,3 +10,6 @@
 [submodule "Split/dependencies/STB"]
 	path = Split/dependencies/STB
 	url = https://github.com/nothings/stb
+[submodule "Split/dependencies/imgui"]
+	path = Split/dependencies/imgui
+	url = https://github.com/ocornut/imgui
