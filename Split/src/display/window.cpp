@@ -80,6 +80,11 @@ namespace Split
 		return {m_width, m_height};
 	}
 
+	GLFWwindow* Window::raw_window(void)
+	{
+		return m_window;
+	}
+
 	bool Window::mouse_on_screen(void)
 	{
 		return m_mouse_on_screen;

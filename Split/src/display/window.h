@@ -27,6 +27,8 @@ namespace Split
 		float aspect_ratio(void);
 		bool mouse_on_screen(void);
 		glm::ivec2 get_size(void);
+		GLFWwindow* raw_window(void);
+
 
 	private:
 		std::string m_title;

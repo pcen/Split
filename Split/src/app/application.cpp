@@ -8,6 +8,8 @@
 #include "input/key_codes.h"
 #include "time.h"
 
+#include "imgui.h"
+
 namespace Split
 {
 	Application::Application() : m_running{ false }, m_window{ nullptr }, m_camera{ nullptr } {}

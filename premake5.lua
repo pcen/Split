@@ -56,7 +56,8 @@ project "Split"
 	defines
 	{
 		"GLFW_INCLUDE_NONE",
-		"STB_IMAGE_IMPLEMENTATION"
+		"STB_IMAGE_IMPLEMENTATION",
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	filter "configurations:Debug"
@@ -93,7 +94,8 @@ project "civ3"
 		"Split/dependencies/SPDLOG/include",
 		"Split/src",
 		"Split/dependencies/GLM",
-		"Split/dependencies/STB"
+		"Split/dependencies/STB",
+		"Split/dependencies/imgui"
 	}
 
 	links
