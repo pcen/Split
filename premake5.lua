@@ -7,58 +7,64 @@ workspace "Split"
 		"Release"
 	}
 
-startproject "civ3"
-
-civ3dir = "../civ3"
-
-include "Split/dependencies"
-
 project "Split"
-	location "Split"
-	kind "StaticLib"
+	-- kind "StaticLib"
+	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
 	systemversion "latest"
 	staticruntime "on"
 
 	pchheader "pch.h"
-	pchsource "%{prj.name}/src/pch.cpp"
+	pchsource "./src/pch.cpp"
 
 	targetdir ("bin/")
-	objdir ("obj/")
+	objdir ("bin/obj/")
 
 	files
 	{
-		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp",
-		"%{prj.name}/src/{prj.name}"
+		"./src/**.h",
+		"./src/**.cpp",
+		"./third_party/glad/src/glad.c"
 	}
 
 	includedirs
 	{
-		"%{prj.name}/src",
-		"%{prj.name}/dependencies/SPDLOG/include",
-		"%{prj.name}/dependencies/GLFW/include",
-		"%{prj.name}/dependencies/GLAD/include",
-		"%{prj.name}/dependencies/imgui",
-		"%{prj.name}/dependencies/GLM",
-		"%{prj.name}/dependencies/STB"
-	}
-
-	links
-	{
-		"GLFW",
-		"GLAD",
-		"IMGUI",
-		"opengl32.lib"
+		"./src",
+		"./third_party/glad/include",
+		"./third_party/glad/include", -- glad.h includes "KHR/khrplatform.h"
+		"./third_party/spdlog/include",
+		"./third_party/imgui",
+		"./third_party/stb"
 	}
 
 	defines
 	{
-		"GLFW_INCLUDE_NONE",
 		"STB_IMAGE_IMPLEMENTATION",
 		"_CRT_SECURE_NO_WARNINGS"
 	}
+
+	filter "files:**.c"
+		flags {"noPCH" }
+
+	filter "system:windows"
+		systemversion "latest"
+
+		includedirs
+		{
+			"C:/Libs/SDL2/include",
+			"C:/Libs/glm"
+		}
+		libdirs
+		{
+			"C:/Libs/SDL2/lib/x64"
+		}
+		links
+		{
+			"SDL2.lib",
+			"SDL2main.lib",
+			"opengl32.lib"
+		}
 
 	filter "configurations:Debug"
 		defines "SPLIT_DEBUG"
@@ -68,45 +74,4 @@ project "Split"
 	filter "configurations:Release"
 		defines "SPLIT_RELEASE"
 		runtime "Release"
-		optimize "on"
-
-project "civ3"
-	location "../civ3"
-	kind "ConsoleApp"
-	language "C++"
-	cppdialect "C++17"
-	systemversion "latest"
-	staticruntime "on"
-
-	targetdir (civ3dir .. "/bin/")
-	objdir (civ3dir .. "/obj/")
-
-	files
-	{
-		(civ3dir .. "/src/**.h"),
-		(civ3dir .. "/src/**.hpp"),
-		(civ3dir .. "/src/**.cpp")
-	}
-
-	includedirs
-	{
-		civ3dir .. "/src/",
-		"Split/dependencies/SPDLOG/include",
-		"Split/src",
-		"Split/dependencies/GLM",
-		"Split/dependencies/STB",
-		"Split/dependencies/imgui"
-	}
-
-	links
-	{
-		"Split"
-	}
-
-	filter "configurations:Debug"
-		defines "SPLIT_DEBUG"
-		symbols "on"
-
-	filter "configurations:Release"
-		defines "SPLIT_RELEASE"
 		optimize "on"

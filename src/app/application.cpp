@@ -8,8 +8,6 @@
 #include "input/key_codes.h"
 #include "time.h"
 
-#include "imgui.h"
-
 namespace Split
 {
 	Application::Application() : m_running{ false }, m_window{ nullptr }, m_camera{ nullptr } {}
@@ -20,7 +18,6 @@ namespace Split
 	{
 		event_bus_subscribe();
 		m_window = std::unique_ptr<Window>(new Window());
-		m_window->init();
 		m_camera = std::unique_ptr<Camera>();
 		m_timer = std::unique_ptr<Timer>(new Timer());
 	}
@@ -41,9 +38,9 @@ namespace Split
 
 	void Application::update(void)
 	{
-		m_timer->update_deltatime();
-		m_window->update();
-		m_camera->update(m_timer->get_deltatime());
+		// m_timer->update_deltatime();
+		m_window->update(0.0);
+		m_camera->update(0.0);
 	}
 
 	void Application::set_camera(Camera* camera)

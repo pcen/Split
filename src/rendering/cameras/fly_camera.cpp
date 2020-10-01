@@ -55,7 +55,7 @@ namespace Split
 			keyboard_move(direction::LEFT);
 		if (Input::key_pressed(KEY_D))
 			keyboard_move(direction::RIGHT);
-		if (Input::key_pressed(KEY_LEFT_SHIFT))
+		if (Input::key_pressed(KEY_LSHIFT));
 			keyboard_move(direction::DOWN);
 		if (Input::key_pressed(KEY_SPACE))
 			keyboard_move(direction::UP);

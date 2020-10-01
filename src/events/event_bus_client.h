@@ -24,7 +24,7 @@ namespace Split
 		}
 
 	private:
-		virtual void event_bus_subscribe(void) = 0;
+		virtual void event_bus_subscribe(void) {}
 	};
 
 	class EventBusListener
@@ -41,7 +41,7 @@ namespace Split
 		}
 
 	private:
-		virtual void event_bus_subscribe(void) = 0;
+		virtual void event_bus_subscribe(void) {}
 	};
 
 }

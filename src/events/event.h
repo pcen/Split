@@ -41,9 +41,10 @@ namespace Split
 		virtual event_type type(void) const = 0;
 		static event_type static_type(void) { return event_type::GENERIC; }
 		static std::string get_name(void) { return event_name(static_type()); }
+		bool alive;
 
 	protected:
-		Event() {}
+		Event() : alive{ false } {}
 	};
 
 	inline std::ostream& operator << (std::ostream& stream, const Event& event)

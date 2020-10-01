@@ -8,14 +8,11 @@ cpp.hint
 **/bin
 **/obj
 **/resources
+**/premake
 
-# Dependencies
-/Split/dependencies/GLAD
+# Third Party
+third_party/spdlog
+third_party/stb
 
 # Scripts
-build.sh
-run.sh
-pm.sh
-
-# Premake
-/premake
+*.sh
