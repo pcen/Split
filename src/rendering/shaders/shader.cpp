@@ -77,7 +77,7 @@ namespace Split
 		if (m_uniforms.count(name))
 			return m_uniforms[name];
 
-		core_log_warn("Uniform \"{0}\" not found", name);
+		log_warn("Uniform \"{0}\" not found", name);
 		return -1;
 	}
 
@@ -91,7 +91,7 @@ namespace Split
 		std::vector<char> log_message(log_length);
 		glGetShaderInfoLog(shader, log_length, &log_length, log_message.data());
 		std::string message(log_message.data(), (size_t)log_length - 1);
-		core_log_error("Shader validation failed:\n\t{0}", message);
+		log_error("Shader validation failed:\n\t{0}", message);
 		return false;
 	}
 
@@ -105,7 +105,7 @@ namespace Split
 		std::vector<char> log_message(log_length);
 		glGetProgramInfoLog(program, log_length, &log_length, log_message.data());
 		std::string message(log_message.data(), (size_t)log_length - 1);
-		core_log_error("Program validation failed:\n\t{0}", message);
+		log_error("Program validation failed:\n\t{0}", message);
 		return false;
 	}
 
@@ -136,12 +136,12 @@ namespace Split
 
 		glLinkProgram(m_id);
 		if (!validate_program(m_id, GL_LINK_STATUS)) {
-			core_log_error("Shader program link failed");
+			log_error("Shader program link failed");
 			status = false;
 		}
 		glValidateProgram(m_id);
 		if (status && !validate_program(m_id, GL_VALIDATE_STATUS)) {
-			core_log_error("Shader program validation failed");
+			log_error("Shader program validation failed");
 			status = false;
 		}
 

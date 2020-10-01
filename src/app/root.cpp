@@ -31,7 +31,7 @@ namespace Split
 			return;
 
 		Split::Log::init();
-		core_log_info("Root run start");
+		log_info("Root run start");
 
 		create_systems(app);
 		init_systems();
@@ -56,33 +56,33 @@ namespace Split
 	void Root::create_systems(Application* app)
 	{
 		if (m_initialized) {
-			core_log_warn("Cannot create_systems: Root already initialized");
+			log_warn("Cannot create_systems: Root already initialized");
 			return;
 		}
 
-		core_log_info("Creating systems...");
+		log_info("Creating systems...");
 		s_event_bus = std::shared_ptr<EventBus>(new EventBus());
 		s_input = std::unique_ptr<Input>(new Input());
 		s_application = std::unique_ptr<Application>(app);
-		core_log_info("Systems created");
+		log_info("Systems created");
 	}
 
 	void Root::init_systems(void)
 	{
 		if (m_initialized) {
-			core_log_warn("Cannot init_systems: Root already initialized");
+			log_warn("Cannot init_systems: Root already initialized");
 			return;
 		}
 
-		core_log_info("Initializing systems...");
+		log_info("Initializing systems...");
 		s_application->init();
-		core_log_info("Systems initialized");
+		log_info("Systems initialized");
 	}
 
 	void Root::cleanup_systems(void)
 	{
 		if (!m_initialized) {
-			core_log_warn("Cannot cleanup_systems: Root is not initialized");
+			log_warn("Cannot cleanup_systems: Root is not initialized");
 			return;
 		}
 	}

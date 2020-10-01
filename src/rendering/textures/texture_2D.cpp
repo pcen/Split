@@ -10,7 +10,7 @@ namespace Split
 	static unsigned int gl_texture_slot(unsigned int index)
 	{
 		if (index > GL_TEXTURE31 - GL_TEXTURE0) {
-			core_log_error("Texture slot {0} invalid, defaulting to slot 0.", index);
+			log_error("Texture slot {0} invalid, defaulting to slot 0.", index);
 			return GL_TEXTURE0;
 		}
 		return GL_TEXTURE0 + index;
@@ -21,7 +21,7 @@ namespace Split
 	{
 		m_data = load_image(path, format, &m_width, &m_height, &m_bpp, channels, true);
 		if (!m_data)
-			core_log_error("Failed to load texture file: {0}", path);
+			log_error("Failed to load texture file: {0}", path);
 
 		glGenTextures(1, &m_id);
 		glBindTexture(type, m_id);

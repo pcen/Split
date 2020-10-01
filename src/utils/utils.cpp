@@ -17,7 +17,7 @@ namespace Split
 			ifs.close();
 		}
 		catch (std::ifstream::failure error) {
-			core_log_error("Failed to read file \"{0}\"", filepath);
+			log_error("Failed to read file \"{0}\"", filepath);
 		}
 		return contents;
 	}
