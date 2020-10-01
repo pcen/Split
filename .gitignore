@@ -10,9 +10,5 @@ cpp.hint
 **/resources
 **/premake
 
-# Third Party
-third_party/spdlog
-third_party/stb
-
 # Scripts
 *.sh
