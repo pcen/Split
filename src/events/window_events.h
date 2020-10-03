@@ -1,5 +1,4 @@
-#ifndef WINDOW_EVENTS_H
-#define WINDOW_EVENTS_H
+#pragma once
 
 #include "event.h"
 #include "input/mouse_data.h"
@@ -190,5 +189,3 @@ namespace Split
 	};
 
 }
-
-#endif /* WINDOW_EVENTS_H */

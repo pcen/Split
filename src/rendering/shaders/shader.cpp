@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "shader.h"
 #include "utils/utils.h"
-#include "logging/log.h"
+#include "core/log.h"
 
 #include "glad/glad.h"
 

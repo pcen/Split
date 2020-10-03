@@ -1,9 +1,8 @@
-#ifndef EVENT_BUS_CLIENT_H
-#define EVENT_BUS_CLIENT_H
+#pragma once
 
 #include "pch.h"
 #include "event_bus.h"
-#include "app/root.h"
+#include "core/root.h"
 
 namespace Split
 {
@@ -45,5 +44,3 @@ namespace Split
 	};
 
 }
-
-#endif /* EVENT_BUS_CLIENT_H */

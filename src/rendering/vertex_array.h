@@ -1,5 +1,4 @@
-#ifndef VERTEX_ARRAY_H
-#define VERTEX_ARRAY_H
+#pragma once
 
 #include "rendering/buffers/index_buffer.h"
 #include "rendering/buffers/vertex_buffer.h"
@@ -31,5 +30,3 @@ namespace Split
 	std::shared_ptr<VertexArray> create_vertex_array(std::shared_ptr<IndexBuffer>& index_buffer, std::shared_ptr<VertexBuffer>& vertex_buffer);
 
 }
-
-#endif /* VERTEX_ARRAY_H */

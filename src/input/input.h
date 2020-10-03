@@ -1,5 +1,4 @@
-#ifndef INPUT_H
-#define INPUT_H
+#pragma once
 
 #include "key_codes.h"
 #include "events/event_bus_client.h"
@@ -29,5 +28,3 @@ namespace Split
 	};
 
 }
-
-#endif /* INPUT_H */

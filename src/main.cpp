@@ -1,12 +1,14 @@
 #include "pch.h"
 
 #include "display/window.h"
+#include "core/root.h"
+#include "core/log.h"
 
 using namespace Split;
 
 int main(int argc, char* argv[])
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
+	Root::start();
 
 	Window window{};
 
@@ -14,6 +16,6 @@ int main(int argc, char* argv[])
 		window.update(0.0);
 	}
 
-	SDL_Quit();
+	Root::quit();
 	return 0;
 }

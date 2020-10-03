@@ -1,5 +1,4 @@
-#ifndef DEFS_H
-#define DEFS_H
+#pragma once
 
 #include "pch.h"
 
@@ -27,5 +26,3 @@ typedef std::shared_ptr<Split::VertexArray> va_ref;
 typedef std::shared_ptr<Split::IndexBuffer> ib_ref;
 typedef std::shared_ptr<Split::VertexBuffer> vb_ref;
 typedef std::shared_ptr<Split::Shader> shader_ref;
-
-#endif /* DEFS_H */

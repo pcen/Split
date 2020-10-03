@@ -1,5 +1,4 @@
-#ifndef EVENT_CALLBACK_H
-#define EVENT_CALLBACK_H
+#pragma once
 
 #include "event.h"
 
@@ -35,5 +34,3 @@ namespace Split
 	};
 
 }
-
-#endif /* EVENT_CALLBACK_H */

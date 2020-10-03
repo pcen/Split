@@ -1,5 +1,4 @@
-#ifndef UTILS_H
-#define UTILS_H
+#pragma once
 
 #include "rendering/textures/texture_formats.h"
 
@@ -11,5 +10,3 @@ namespace Split
 	unsigned char* load_image(std::string path, TextureFormat format, int* width, int* height, int* bpp, int channels, bool flip);
 
 }
-
-#endif /* UTILS_H */

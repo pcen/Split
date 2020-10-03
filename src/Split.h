@@ -1,6 +1,6 @@
 #pragma once
 
-#include "app/application.h"
+#include "core/application.h"
 
 #include "input/input.h"
 
@@ -13,6 +13,4 @@
 
 #include "defs/defs.h"
 
-#include "logging/log.h"
-
-#include "app/launch.h"
+#include "core/log.h"

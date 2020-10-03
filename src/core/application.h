@@ -1,5 +1,4 @@
-#ifndef APPLICATION_H
-#define APPLICATION_H
+#pragma once
 
 #include "events/event_bus_client.h"
 
@@ -34,10 +33,4 @@ namespace Split
 		void event_bus_subscribe(void) override;
 	};
 
-	/* client returns application
-	 */
-	Application* create_application(void);
-
 }
-
-#endif /* APPLICATION_H */

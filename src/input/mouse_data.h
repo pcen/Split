@@ -1,5 +1,4 @@
-#ifndef MOUSE_DATA_H
-#define MOUSE_DATA_H
+#pragma once
 
 namespace Split
 {
@@ -13,5 +12,3 @@ namespace Split
 	} mouse_data;
 
 }
-
-#endif /* MOUSE_DATA_H */

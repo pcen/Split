@@ -2,7 +2,7 @@
 #include "texture_2D.h"
 #include "glad/glad.h"
 #include "utils/utils.h"
-#include "logging/log.h"
+#include "core/log.h"
 
 namespace Split
 {

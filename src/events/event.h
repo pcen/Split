@@ -1,5 +1,4 @@
-#ifndef EVENT_H
-#define EVENT_H
+#pragma once
 
 #include "pch.h"
 
@@ -53,5 +52,3 @@ namespace Split
 	}
 
 }
-
-#endif /* EVENT_H */

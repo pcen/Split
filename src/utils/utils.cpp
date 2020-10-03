@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "utils.h"
-#include "logging/log.h"
+#include "core/log.h"
 #include "stb_image.h"
 
 namespace Split
