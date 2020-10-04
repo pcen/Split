@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "window.h"
 
-#include "events/window_events.h"
+#include "events/WindowEvents.h"
 
 #include "glad/glad.h"
 

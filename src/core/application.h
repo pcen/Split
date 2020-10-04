@@ -1,6 +1,6 @@
 #pragma once
 
-#include "events/event_bus_client.h"
+#include "events/EventBusClient.h"
 
 namespace Split
 {

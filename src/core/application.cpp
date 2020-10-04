@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "application.h"
 
-#include "events/window_events.h"
+#include "events/WindowEvents.h"
 #include "display/window.h"
 #include "rendering/cameras/camera.h"
 #include "rendering/cameras/fly_camera.h"

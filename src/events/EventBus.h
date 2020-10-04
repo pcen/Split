@@ -1,6 +1,6 @@
 #pragma once
 
-#include "event_callback.h"
+#include "EventCallback.h"
 
 namespace Split
 {
@@ -8,7 +8,7 @@ namespace Split
 	class EventBusRegistry
 	{
 	public:
-		typedef std::unordered_map<event_type, EventCallback*> callback_map;
+		typedef std::unordered_map<std::type_index, EventCallback*> callback_map;
 
 		EventBusRegistry();
 		~EventBusRegistry();
@@ -16,9 +16,9 @@ namespace Split
 		bool hasUser(void* user);
 		void addUser(void* user);
 		void removeUser(void* user);
-		void addCallback(void* user, event_type type, EventCallback* callback);
+		void addCallback(void* user, const std::type_info& type, EventCallback* callback);
 
-		template<class E> void triggerCallbacks(event_type type, E& event)
+		template<class E> void triggerCallbacks(const std::type_info type, E& event)
 		{
 			for (auto& user : users) {
 				if (users.count(type))
@@ -37,12 +37,12 @@ namespace Split
 
 		template<class T, class E> void addCallback(T* instance, void(T::* method)(E&))
 		{
-			users.addCallback(instance, E::static_type(), new Callback<T, E>(instance, method));
+			users.addCallback(instance, typeid(E), new Callback<T, E>(instance, method));
 		}
 
 		template<class E> void post(E& event)
 		{
-			users.triggerCallbacks(E::static_type(), event);
+			users.triggerCallbacks(typeid(E), event);
 		}
 
 		void removeUser(void* instance);

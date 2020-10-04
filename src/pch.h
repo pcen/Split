@@ -9,6 +9,7 @@
 #include <sstream>
 #include <unordered_map>
 #include <vector>
+#include <typeindex>
 
 // spdlog logging library
 #include "spdlog/spdlog.h"

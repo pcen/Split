@@ -1,7 +1,7 @@
 #ifndef FLY_CAMERA_H
 #define FLY_CAMERA_H
 
-#include "events/event_bus_client.h"
+#include "events/EventBusClient.h"
 #include "camera.h"
 
 namespace Split

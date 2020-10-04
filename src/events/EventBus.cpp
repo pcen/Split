@@ -37,7 +37,7 @@ namespace Split
 		users.erase(user);
 	}
 
-	void EventBusRegistry::addCallback(void* user, event_type type, EventCallback* callback)
+	void EventBusRegistry::addCallback(void* user, const std::type_info& type, EventCallback* callback)
 	{
 		if (!hasUser(user))
 			addUser(user);

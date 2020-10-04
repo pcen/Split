@@ -1,8 +1,8 @@
 #pragma once
 
 #include "key_codes.h"
-#include "events/event_bus_client.h"
-#include "events/window_events.h"
+#include "events/EventBusClient.h"
+#include "events/WindowEvents.h"
 #include "mouse_data.h"
 
 namespace Split

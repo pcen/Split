@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "fly_camera.h"
-#include "events/window_events.h"
-#include "events/event_bus_client.h"
+#include "events/WindowEvents.h"
+#include "events/EventBusClient.h"
 #include "input/input.h"
 
 #define normalized_x(v1, v2) (glm::normalize(glm::cross((v1), (v2))))
