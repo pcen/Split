@@ -5,29 +5,29 @@
 namespace Split
 {
 
-	class AEventCallback
+	class EventCallback
 	{
 	public:
-		virtual ~AEventCallback() {}
-		void call(Event& event) { call_method(event); }
-
-	protected:
-		AEventCallback() {}
+		virtual ~EventCallback() {}
+		void call(Event& event) { invoke(event); }
 
 	private:
-		virtual void call_method(Event& event) = 0;
-
+		virtual void invoke(Event& event) = 0;
 	};
 
 	template<class T, class E>
-	class EventCallback : public AEventCallback
+	class Callback : public EventCallback
 	{
 	public:
-		EventCallback(T* instance, void(T::* method)(E&)) : instance{ instance }, method{ method } {}
-		~EventCallback() {}
+		Callback(T* instance, void(T::* method)(E&))
+			: instance{ instance },
+			method{ method } {}
 
 	private:
-		void call_method(Event& event) override { (instance->*method)(static_cast<E&>(event)); }
+		void invoke(Event& event) override
+		{
+			(instance->*method)(static_cast<E&>(event));
+		}
 
 		T* instance;
 		void(T::* method)(E&);

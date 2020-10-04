@@ -1,13 +1,13 @@
 #include "pch.h"
 #include "root.h"
 
-#include "events/event_bus.h"
+#include "events/EventBus.h"
 #include "log.h"
 
 namespace Split
 {
 	// Static data members
-	EventBus* Root::eventBus = nullptr;
+	EventBus* Root::s_eventBus = nullptr;
 	bool Root::initialized = false;
 
 	bool Root::start(void)
@@ -19,8 +19,8 @@ namespace Split
 
 		Split::Log::init();
 
-		create_systems();
-		init_systems();
+		createSystems();
+		initSystems();
 
 		Root::initialized = true;
 		return true;
@@ -33,9 +33,10 @@ namespace Split
 			return false;
 		}
 
-		quit_systems();
-		cleanup_systems();
+		quitSystems();
+		cleanupSystems();
 		Root::initialized = false;
+		return true;
 	}
 
 	bool Root::isInitialized(void)
@@ -43,35 +44,45 @@ namespace Split
 		return Root::initialized;
 	}
 
-	EventBus* Root::event_bus(void)
+	EventBus* Root::eventBus(void)
 	{
-		return Root::eventBus;
+		return Root::s_eventBus;
 	}
 
-	void Root::create_systems(void)
+	void Root::createSystems(void)
 	{
 		log_info("Creating systems");
-		Root::eventBus = new EventBus();
+		
+		Root::s_eventBus = new EventBus();
+
 		log_info("Systems created");
 	}
 
-	void Root::init_systems(void)
+	void Root::initSystems(void)
 	{
 		log_info("Initializing systems");
+		
 		SDL_Init(SDL_INIT_EVERYTHING);
+		
 		log_info("Systems initialized");
 	}
 
-	void Root::quit_systems(void)
+	void Root::quitSystems(void)
 	{
 		log_info("Quitting systems");
+		
 		SDL_Quit();
+
+		log_info("Systems quit");
 	}
 
-	void Root::cleanup_systems(void)
+	void Root::cleanupSystems(void)
 	{
 		log_info("Cleaning up systems");
-		delete Root::eventBus;
+
+		delete Root::s_eventBus;
+
+		log_info("Systems cleaned up");
 	}
 
 }

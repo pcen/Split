@@ -1,7 +1,7 @@
 #pragma once
 
 #include "pch.h"
-#include "event_bus.h"
+#include "EventBus.h"
 #include "core/root.h"
 
 namespace Split
@@ -15,11 +15,14 @@ namespace Split
 	protected:
 		EventBusClient() {}
 
-		template<class E> void post_event(E& event) { Root::event_bus()->post(event); }
+		template<class E> void post_event(E& event)
+		{
+			Root::event_bus()->post(event);
+		}
 
 		template <class T, class E> void callback_subscribe(void(T::* method)(E&))
 		{
-			Root::event_bus()->add_callback(static_cast<T*>(this), method);
+			Root::eventBus()->addCallback(static_cast<T*>(this), method);
 		}
 
 	private:
@@ -36,7 +39,7 @@ namespace Split
 
 		template <class T, class E> void callback_subscribe(void(T::* method)(E&))
 		{
-			Root::event_bus()->add_callback(static_cast<T*>(this), method);
+			Root::eventBus()->addCallback(static_cast<T*>(this), method);
 		}
 
 	private:

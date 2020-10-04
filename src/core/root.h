@@ -11,19 +11,19 @@ namespace Split
 		static bool start(void);
 		static bool quit(void);
 		static bool isInitialized(void);
-		static EventBus* event_bus(void);
+		static EventBus* eventBus(void);
 
 	private:
-		static void create_systems(void);
-		static void init_systems(void);
+		static void createSystems(void);
+		static void initSystems(void);
 
-		static void quit_systems(void);
-		static void cleanup_systems(void);
+		static void quitSystems(void);
+		static void cleanupSystems(void);
 
 		static bool initialized;
 
 		// Initialized once
-		static EventBus* eventBus;
+		static EventBus* s_eventBus;
 	};
 
 }
