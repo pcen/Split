@@ -1,7 +1,7 @@
 #pragma once
 
 #include "event.h"
-#include "input/mouse_data.h"
+#include "input/Input.h"
 
 namespace Split
 {
@@ -94,7 +94,7 @@ namespace Split
 			m_dx{ dx },
 			m_dy{ dy }
 		{}
-		MouseMove(mouse_data mouse)
+		MouseMove(Mouse mouse)
 			: m_x{ mouse.x },
 			m_y{ mouse.y },
 			m_dx{ mouse.dx },

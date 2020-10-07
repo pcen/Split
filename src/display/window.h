@@ -1,7 +1,7 @@
 #pragma once
 
 #include "events/EventBusClient.h"
-#include "input/mouse_data.h"
+#include "input/Input.h"
 
 namespace Split
 {
@@ -28,7 +28,7 @@ namespace Split
 		std::string m_title;
 		bool m_open;
 
-		mouse_data m_mouse;
+		Mouse m_mouse;
 
 		int m_width, m_height;
 		float m_aspect_ratio;

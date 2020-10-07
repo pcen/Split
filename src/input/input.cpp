@@ -1,11 +1,35 @@
 #include "pch.h"
-#include "input.h"
+#include "events/WindowEvents.h"
+#include "Input.h"
 
 namespace Split
 {
 
-	static bool keyboard[512];
-	static mouse_data mouse;
+	// Mouse Implementation
+	Mouse::Mouse()
+		: x{ 0 },
+		y{ 0 },
+		dx{ 0.0f },
+		dy{ 0.0f },
+		initialized{ false } {}
+
+	void Mouse::update(double xpos, double ypos)
+	{
+		if (!initialized) {
+			x = (float)xpos;
+			y = (float)ypos;
+			initialized = true;
+		}
+		dx = (float)xpos - x;
+		dy = y - (float)ypos;
+		x = (float)xpos;
+		y = (float)ypos;
+	}
+
+	// Input Implementation
+
+	bool Input::s_keyboard[512];
+	Mouse Input::s_mouse;
 
 	Input::Input()
 	{
@@ -21,42 +45,32 @@ namespace Split
 		callback_subscribe(&Input::on_mouse_move);
 	}
 
-	bool Input::key_pressed(int key)
+	bool Input::key(int key)
 	{
-		return keyboard[key];
+		return Input::s_keyboard[key];
 	}
 
 	void Input::on_key_press(KeyPress& key)
 	{
-		keyboard[key.keycode()] = true;
+		Input::s_keyboard[key.keycode()] = true;
 	}
 
 	void Input::on_key_release(KeyRelease& key)
 	{
-		keyboard[key.keycode()] = false;
+		Input::s_keyboard[key.keycode()] = false;
 	}
 
-	float Input::mouse_x(void)
+	Mouse Input::mouse(void)
 	{
-		return mouse.x;
+		return Input::s_mouse;
 	}
 
-	float Input::mouse_y(void)
+	void Input::on_mouse_move(MouseMove& m)
 	{
-		return mouse.y;
-	}
-
-	mouse_data Input::get_mouse(void)
-	{
-		return mouse;
-	}
-
-	void Input::on_mouse_move(MouseMove& mouse_move)
-	{
-		mouse.x = mouse_move.x();
-		mouse.y = mouse_move.y();
-		mouse.dx = mouse_move.dx();
-		mouse.dy = mouse_move.dy();
+		Input::s_mouse.x = m.x();
+		Input::s_mouse.y = m.y();
+		Input::s_mouse.dx = m.dx();
+		Input::s_mouse.dy = m.dy();
 	}
 
 }

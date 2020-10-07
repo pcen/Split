@@ -1,25 +1,39 @@
 #pragma once
 
-#include "key_codes.h"
 #include "events/EventBusClient.h"
-#include "events/WindowEvents.h"
-#include "mouse_data.h"
+#include "KeyCodes.h"
 
 namespace Split
 {
+	class KeyPress;
+	class KeyRelease;
+	class MouseMove;
+
+	struct Mouse
+	{
+	public:
+		Mouse();
+		float x, y, dx, dy;
+		void update(double xpos, double ypos);
+	private:
+		bool initialized;
+	};
 
 	class Input : public EventBusClient
 	{
 		friend class Root;
 	public:
-		static bool key_pressed(int key);
-		static float mouse_x(void);
-		static float mouse_y(void);
-		static mouse_data get_mouse(void);
+		static bool key(int key);
+		static Mouse mouse(void);
+
 		~Input();
 
 	private:
 		Input();
+
+		static Mouse s_mouse;
+		static bool s_keyboard[512];
+
 		void on_key_press(KeyPress& key_event);
 		void on_key_release(KeyRelease& key_event);
 		void on_mouse_move(MouseMove& mouse_event);

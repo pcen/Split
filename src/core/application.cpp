@@ -5,7 +5,7 @@
 #include "display/window.h"
 #include "rendering/cameras/camera.h"
 #include "rendering/cameras/fly_camera.h"
-#include "input/key_codes.h"
+#include "input/KeyCodes.h"
 #include "time.h"
 
 namespace Split
