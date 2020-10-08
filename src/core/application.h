@@ -30,7 +30,7 @@ namespace Split
 		bool m_running;
 
 	private:
-		void event_bus_subscribe(void) override;
+		void eventBusSubscribe(void) override;
 	};
 
 }

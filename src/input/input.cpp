@@ -33,16 +33,16 @@ namespace Split
 
 	Input::Input()
 	{
-		event_bus_subscribe();
+		eventBusSubscribe();
 	}
 
 	Input::~Input() {}
 
-	void Input::event_bus_subscribe(void)
+	void Input::eventBusSubscribe(void)
 	{
-		callback_subscribe(&Input::on_key_press);
-		callback_subscribe(&Input::on_key_release);
-		callback_subscribe(&Input::on_mouse_move);
+		callbackSubscribe(&Input::on_key_press);
+		callbackSubscribe(&Input::on_key_release);
+		callbackSubscribe(&Input::on_mouse_move);
 	}
 
 	bool Input::key(int key)

@@ -2,8 +2,6 @@
 
 #include "pch.h"
 
-/* Forward declarations
- */
 namespace Split
 {
 	class VertexArray;
@@ -12,17 +10,13 @@ namespace Split
 	class Shader;
 };
 
-/* OpenGL draw modes
- */
+// OpenGL Buffer Usage Hints
 #define STATIC_DRAW 0x88E4
 
-/* OpenGL texture types
- */
+// OpenGL Texture Types
 #define TEXTURE_2D 0x0DE1
 
-/* Typedefs
- */
-typedef std::shared_ptr<Split::VertexArray> va_ref;
-typedef std::shared_ptr<Split::IndexBuffer> ib_ref;
-typedef std::shared_ptr<Split::VertexBuffer> vb_ref;
-typedef std::shared_ptr<Split::Shader> shader_ref;
+using va_ref = std::shared_ptr<Split::VertexArray>;
+using ib_ref = std::shared_ptr<Split::IndexBuffer>;
+using vb_ref = std::shared_ptr<Split::VertexBuffer>;
+using shader_ref = std::shared_ptr<Split::Shader>;

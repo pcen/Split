@@ -2,6 +2,15 @@
 
 namespace Split
 {
+	class Time
+	{
+	public:
+		static double now(void);
+		static double nowMilli(void);
+		static double nowMicro(void);
+		static double nowNano(void);
+	};
+
 	class Timer
 	{
 	public:
@@ -11,6 +20,20 @@ namespace Split
 		double duration;
 
 	private:
-		std::chrono::time_point<std::chrono::high_resolution_clock> start_point;
+		double startTime;
 	};
+
+	class DeltaTime
+	{
+	public:
+		DeltaTime();
+
+		operator double();
+		void update(void);
+
+	private:
+		unsigned long now, last;
+		double dt;
+	};
+
 }

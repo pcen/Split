@@ -11,6 +11,8 @@
 #include <vector>
 #include <typeindex>
 
+#include "core/Types.h"
+
 // spdlog logging library
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"

@@ -38,7 +38,7 @@ namespace Split
 		void on_key_release(KeyRelease& key_event);
 		void on_mouse_move(MouseMove& mouse_event);
 
-		void event_bus_subscribe(void) override;
+		void eventBusSubscribe(void) override;
 	};
 
 }

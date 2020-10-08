@@ -19,7 +19,7 @@ namespace Split
 	Texture2D::Texture2D(std::string path, TextureFormat format, int channels, int type)
 		: m_type{ type }
 	{
-		m_data = load_image(path, format, &m_width, &m_height, &m_bpp, channels, true);
+		m_data = loadImage(path, format, &m_width, &m_height, &m_bpp, channels, true);
 		if (!m_data)
 			log_error("Failed to load texture file: {0}", path);
 

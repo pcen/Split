@@ -35,7 +35,7 @@ namespace Split
 		float m_sensitivity, m_speed, m_real_speed;
 
 		void keyboard_move(direction move);
-		void event_bus_subscribe(void) override;
+		void eventBusSubscribe(void) override;
 		void update_view_matrix(void);
 	};
 

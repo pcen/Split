@@ -16,7 +16,7 @@ namespace Split
 
 	void Application::init(void)
 	{
-		event_bus_subscribe();
+		eventBusSubscribe();
 		m_window = std::unique_ptr<Window>(new Window());
 		m_camera = std::unique_ptr<Camera>();
 		m_timer = std::unique_ptr<Timer>(new Timer());
@@ -59,10 +59,10 @@ namespace Split
 			m_running = false;
 	}
 
-	void Application::event_bus_subscribe(void)
+	void Application::eventBusSubscribe(void)
 	{
-		callback_subscribe(&Application::on_window_close);
-		callback_subscribe(&Application::on_key_press);
+		callbackSubscribe(&Application::on_window_close);
+		callbackSubscribe(&Application::on_key_press);
 	}
 
 }

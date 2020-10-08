@@ -13,20 +13,19 @@ namespace Split
 		virtual ~EventBusClient() {}
 
 	protected:
-		EventBusClient() {}
 
-		template<class E> void post_event(E& event)
+		template<class E> void postEvent(E& event)
 		{
-			Root::event_bus()->post(event);
+			Root::eventBus()->post(event);
 		}
 
-		template <class T, class E> void callback_subscribe(void(T::* method)(E&))
+		template <class T, class E> void callbackSubscribe(void(T::* method)(E&))
 		{
 			Root::eventBus()->addCallback(static_cast<T*>(this), method);
 		}
 
 	private:
-		virtual void event_bus_subscribe(void) {}
+		virtual void eventBusSubscribe(void) {}
 	};
 
 	class EventBusListener
@@ -35,15 +34,14 @@ namespace Split
 		virtual ~EventBusListener() {}
 
 	protected:
-		EventBusListener() {}
 
-		template <class T, class E> void callback_subscribe(void(T::* method)(E&))
+		template <class T, class E> void callbackSubscribe(void(T::* method)(E&))
 		{
 			Root::eventBus()->addCallback(static_cast<T*>(this), method);
 		}
 
 	private:
-		virtual void event_bus_subscribe(void) {}
+		virtual void eventBusSubscribe(void) {}
 	};
 
 }

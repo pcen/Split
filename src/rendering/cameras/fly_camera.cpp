@@ -28,14 +28,14 @@ namespace Split
 		m_yaw = -90.0f; m_pitch = 0.0f; m_roll = 0.0f;
 		m_real_speed = 0.0f;
 		update_view_matrix();
-		event_bus_subscribe();
+		eventBusSubscribe();
 	}
 
 	FlyCamera::~FlyCamera() {}
 	
-	void FlyCamera::event_bus_subscribe(void)
+	void FlyCamera::eventBusSubscribe(void)
 	{
-		callback_subscribe(&FlyCamera::on_mouse_move);
+		callbackSubscribe(&FlyCamera::on_mouse_move);
 	}
 
 	glm::mat4& FlyCamera::get_matrix(void) { return m_view_matrix; }

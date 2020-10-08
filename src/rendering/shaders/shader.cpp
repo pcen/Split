@@ -126,8 +126,8 @@ namespace Split
 		bool status = true;
 		m_id = glCreateProgram();
 
-		std::string vertex_code = read_file(vertex);
-		std::string pixel_code = read_file(pixel);
+		std::string vertex_code = readFile(vertex);
+		std::string pixel_code = readFile(pixel);
 
 		unsigned int vertex_id = compile_shader(vertex_code, GL_VERTEX_SHADER);
 		unsigned int pixel_id = compile_shader(pixel_code, GL_FRAGMENT_SHADER);

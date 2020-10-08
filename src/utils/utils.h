@@ -4,9 +4,10 @@
 
 namespace Split
 {
+	// Read a text file and return the contents in a std::string
+	std::string readFile(std::string filepath);
 
-	std::string read_file(std::string filepath);
-
-	unsigned char* load_image(std::string path, TextureFormat format, int* width, int* height, int* bpp, int channels, bool flip);
+	// Load an image file
+	unsigned char* loadImage(std::string path, TextureFormat format, int* width, int* height, int* bpp, int channels, bool flip);
 
 }

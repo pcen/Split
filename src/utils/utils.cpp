@@ -6,7 +6,7 @@
 namespace Split
 {
 
-	std::string read_file(std::string filepath)
+	std::string readFile(std::string filepath)
 	{
 		std::string contents;
 		std::ifstream ifs;
@@ -22,7 +22,7 @@ namespace Split
 		return contents;
 	}
 
-	unsigned char* load_image(std::string path, TextureFormat format, int* width, int* height, int* bpp, int channels, bool flip)
+	unsigned char* loadImage(std::string path, TextureFormat format, int* width, int* height, int* bpp, int channels, bool flip)
 	{
 		if (flip)
 			stbi_set_flip_vertically_on_load(1);
